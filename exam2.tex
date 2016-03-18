@@ -1,0 +1,93 @@
+\documentclass[letterpaper,onecolumn,titlepage]{Ythesis}
+\usepackage{siunitx}
+\usepackage{amsmath}
+\usepackage{url}
+\sisetup{detect-weight=true, detect-family=true}
+\newcommand{\micron}[1] {\SI{#1}{\micro\meter}}
+
+%\usepackage{setspace}
+%\onehalfspace
+
+\title{}
+\author{Machine Learning Influenced of High Dimensional Time Varying Data}
+\committee{ Dr. Michael Grossberg(Advisor)}
+\submitted{}
+\abstract{}
+\begin{document}
+\makefrontmatter
+
+\section{Introduction}
+
+Large datasets of climate and weather data are being produced from multiple sources. With cheaper and increased computer power, and cheaper disk storage, it is now possible to more easily create long model simulations at higher resolutions. Increasingly  high 
+resolution satellite data and reanalysis projects which blend both model prediction and measurements create readily available large uniformly sampled spatio-temporal resolution datasets. Measured data from networks of ground stations and proxy data from trees, 
+glaciers, oceans, corals, fossils, and historical records are also becoming more accessible, 
+yielding sometimes irregularly sampled data that provides a host of 
+information on climate variability. The great size of many of these data sets mean that just providing a download link does not really make the data accessible to the public or even other scientists. It is important for the scientists who produce the data to have a way to make it explorable.. 
+
+
+%%some sorta transition from the generic to the specific tools-and shift this to be more tool oriented
+
+
+Munzner \cite{Munzner14} defines a time-varying dataset as one in which time is an intrinsic attribute of how the various observations are measured; for example recording snow fall every 3 hours or stock prices at the beginning or end of day. She contrasts this with datasets that are amassed over time where the length of the record does not intrinsically mean the data is time varying; for example [insert something that isn't horse racing] 
+
+Often the observations in these time-varying datasets are also spatially varying, spreading over the earth or the brain or another variable space where all the observations in the high dimensional space are of the same unit. %%note: must get some reference/notation/way to discuss this
+
+This poses a difficult visualization task because the researcher is trying to capture multiple levels of interaction:
+\begin{enumerate}
+	\item intraobservational: snowfall in New York and snowfall in New Jersey on August 9th 2015)
+	\item interobservational: global snowfall on August 9th and August 10th
+	\item a mixture thereof: does snowfall in New York on the 9th affect snowfall in New Jersey on the 10th?
+\end{enumerate}
+
+
+\section{Clustering Based Aggregation}
+\label{sec:clustering}
+Wijk and Selow \cite{WijkSelow99} worked with a special case of spatio-temperal data wherein the spatial domain is also time. They were exploring trends on multiple time scales simultaneously, so the spatial domain was in effect the relationship of hours to neighbouring hours (typically a pixel in a more typical geographic map) and how those are blocked into days (geographical borders) or even months (continents) and then how those higher level groupings relate to each other. 
+Wikj and Selow studied the energy consumption of and number of employees in an office building over the course of a year. They first built a 3D visualization %%include graphics
+wherein the days and hours are mapped on different axis, colors and height are both used to indicate kilowatt usage. Because the aggregated monthly patterns get lost in the 3D, and would likely be difficult to see in even a 2D heatmap because of the high temperoal resolution, Wikj and Selow turn to machine learning and common idioms to reveal aggregated patterns. 
+
+They first turn the data into a vector space wherein each day is an observation consisting of the energy consumption measurements for each hour. They then cluster the days to find which days have similar energy consumption patterns. To then make this data intuitive to the user, they display this information as linked 2d views: one side is a calendar wherein the days are colored based on their cluster membership and the other side of the visualization is a simple line plot of the cluster means, themselves colored in the same scheme as the calendar. %insert screenshot here
+
+\section{Spatio-Temporal Earth Science}
+\label{sec:climate}
+Climate studies are a common application of spatio-temporal visualization techniques because they exemplify the importance of visualizing the temporal, spatial, and spatio-temporal relationships. 
+%%Actually need to pull the vistrails paper, possibly also UV-CDAT paper (modern one)
+
+\subsection{Visualization Toolkits}
+Some research institutions provide a tool to explore data they created, such as the \cite{src:esrlpsd}, but since all these tools are site specific, a researcher would either have to use the datasets on the website or submit their datasets for uploading 
+(assuming their dataset meets the submission criteria for an aggregation site). A scientist also has the option of using the CDAT suite of libraries, developed by the \cite{WilliamsEtAl13}, GrADS, \cite{src:grads},and Ferret, \cite{src:HankinEtAl96}. The major critique with all of these though is that they mostly render the data as is, with limited support for statistical analysis and the application of typical meterological analysis. Support for even common machine learning techniques often requires extending the library; therefore for the purpose of this discussion it is somewhat useful to treat these tools more as plotting libraries than visualization systems. %%somewhere scope out/differentiate between plotting and viz
+
+
+%%pull these papers out of SunZhou
+\subsection{Temporal Trajectory Analysis}
+\subsection{Spatial Pattern Indices}
+
+%%this paper is kinda terrible and I should probably not use it
+Many analysis and visualizations of climate data rely on machine learning techniques such as clustering, but they treat each observation as independent or they do not ascertain if a pixel affects its neighbor. Lin, Xie, Song, and Wu explore those relationships through a tight clustering method that is evaluated using a Value-Process measurement  \cite{LinXieSongWu09}. 
+
+They first create a matrix of the form time stamp by measurement for each location (latitude, longitude pair) on earth. The temporal resolution is monthly from 1901 to 200 and the measurements are similarity estimation, temperature, precipitation, annual amplitude of temperature, annual amplitude of precipitation. They apply a principal component to each of these matrices to extract the first principal component, which is what they then use to filter our dissimilar points within a radius R of the point. They then refine their filter by computing the distance between the remaining points using the Pearson product moment correlation coefficient. Afterwards they draw a similarity graph amongst the remaining points. 
+
+A fairly common problem in visualizing spatio-temporal data is to visualize changes in land ise and cover-whether the land gets drier or more covered with vegetation-over time. Since there are many techniques that will show the temporal dynamics over time, Sun and Zhou \cite{SunZhou16} developed a method to quantify and visualize how both the time and neighboring pixels effected changes in the land cover in the Yuli County in the Xinjiang Uygur
+Autonomous Region of western China. 
+
+Sun and Zhou acquired data from four satellites over a period of time where vegetation would strongly stand out from other land types; they then classified the land types in the satellite images into one of 6 classes using a Maximum Likelihood Classifier and finally merged the the six classes into either farmland or other. They coded farmland as a binary 1 and others as 0 to create a binary image for each timestamp and then computed the trajectory of each pixel by examining the change in class of each pixel over time. Because the set of all possible trajectories was too large to feasibly look at, they generalized the trajectories to four categories based on whether it had changed from one state to another and how long it had stayed in that state. They then visualized these trajectories by assigning a color to each of the most common ones and placing it on a heat map, essentially encoding distinct temporal patterns using colors. 
+
+
+
+\section{Ensemble Visualizations}
+Ensemble models are a special case of spatio-temporal visualizations; they are created by running the same model (often a time dependent one) using different initial conditions. Each of the resulting set of modeled data is called a member of the ensemble. Ensembles have the same spatio-temperoal data visualization difficulties as any other spatio-temporally varying dataset and the added complication of incorporating the information gained from using an ensemble of models rather than a singular model. 
+
+
+
+
+%%Nir paper? (My work)
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+
+\pagebreak
+\bibliographystyle{abbrv}
+\bibliography{exam2}
+
+\end{document}
