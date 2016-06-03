@@ -51,3 +51,17 @@ transformation + encoding-> which may also be in that great big survey
 I presented. 
 
 
+pg. 75 - validity
+Use her validity lense to look at what choices were "right" and which
+ones were "wrong":
+
+domain
+data/task
+visual encoding/idiom
+algorithm
+
+Also, this might be a better structer than data-task-idiom? (and it
+may be interesting to know what langauges tools are written in since
+langauge choice is important - if your domain expert knows Python, a
+slower tool in Python that they can adjust if needed may be more
+practical than a very quick tool in Julia...)
