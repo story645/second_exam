@@ -8,12 +8,11 @@
 %\usepackage{setspace}
 %\onehalfspace
 
-\title{Choosing the right transforms and vizualizations for your climatology question}
-climatology questions?}
-%\author{Machine Learning Influenced of High Dimensional Time Varying Data}
-\committee{ Dr. Michael Grossberg(Advisor)}
+\title{Visualizing Relationships Amongst and With Climate Ensembles}
+\author{Hannah Aizenman}
+\committee{ Dr. Michael Grossberg(Advisor), Robert Haralick, Huy Vo}
 \submitted{}
-\abstract{}
+\abstract{Climate datasets often inherently try to encapsulate complex systems. The variables are often high dimensional and often have long ranging interactions both temporally and spatially. Ensemble climate models often add another layer to the complexity because they add uncertainty to the already complex interactions. Scientists often try to visualize these interactions either by attempting to encode many if them in a visualization, using a machine learning algorithm to model the interaction and traditional approaches to visualize them, or building out a complex toolkit that relies on users to compare graphs of each of the sub interactions to build out the relationships. Tamara'Munzner's domain-task-idiom framework can be an effective way of grouping the visualization techniques that have become dominant in the ensemble evaluation community and understanding what it is they're trying to accomplish.}
 \begin{document}
 \makefrontmatter
 
@@ -24,6 +23,16 @@ climatology questions?}
 %glaciers, oceans, corals, fossils, and historical records are also becoming more accessible, 
 %yielding sometimes irregularly sampled data that provides a host of 
 %information on climate variability. The great size of many of these data sets mean that just providing a download link does not really make the data accessible to the public or even other scientists. It is important for the scientists who produce the data to have a way to make it explorable.. 
+
+And that those explorations are understandable...while many papers(\cite{Munzner} \cite{Acquired Codes} \cite{...}discuss how more complex tasks inherently encourage more complex visualizations, they also warn that more complex visual idioms are often more difficult to understand and so they may not be beneficial. Some authors though discuss how highly specialized dashboards may be more productive once specialists are trained on the software.
+
+Organization:
+\begin{table}
+data & task & idiom  & AUDIENCE\\
+
+\end{table} 
+
+
 
 \subsection{Scope}
 
@@ -51,47 +60,29 @@ This poses a difficult visualization task because the researcher is trying to ca
 \end{enumerate}
 
 
-\section{Clustering Based Aggregation}
-\label{sec:clustering}
-Wijk and Selow \cite{WijkSelow99} worked with a special case of spatio-temperal data wherein the spatial domain is also time. They were exploring trends on multiple time scales simultaneously, so the spatial domain was in effect the relationship of hours to neighbouring hours (typically a pixel in a more typical geographic map) and how those are blocked into days (geographical borders) or even months (continents) and then how those higher level groupings relate to each other. 
-Wikj and Selow studied the energy consumption of and number of employees in an office building over the course of a year. They first built a 3D visualization %%include graphics
-wherein the days and hours are mapped on different axis, colors and height are both used to indicate kilowatt usage. Because the aggregated monthly patterns get lost in the 3D, and would likely be difficult to see in even a 2D heatmap because of the high temperoal resolution, Wikj and Selow turn to machine learning and common idioms to reveal aggregated patterns. 
+\section{Simple idioms, hard math}
 
-They first turn the data into a vector space wherein each day is an observation consisting of the energy consumption measurements for each hour. They then cluster the days to find which days have similar energy consumption patterns. To then make this data intuitive to the user, they display this information as linked 2d views: one side is a calendar wherein the days are colored based on their cluster membership and the other side of the visualization is a simple line plot of the cluster means, themselves colored in the same scheme as the calendar. %insert screenshot here
+\subsection{Probabilistic aggregations/information gain metrics}
+\label{sec:probabilistic}
+%%Dump Nir into here-it kinda ties into the band depth stuff that'll show up later
+\subsection{markov chain analysis}
+\subsection{clustering}
 
-\section{Spatio-Temporal Earth Science}
-\label{sec:climate}
-Climate studies are a common application of spatio-temporal visualization techniques because they exemplify the importance of visualizing the temporal, spatial, and spatio-temporal relationships. 
-%%Actually need to pull the vistrails paper, possibly also UV-CDAT paper (modern one)
+\section{Let's throw Everything in one picture}                                                        
+%% Evolution of Single Task/Single Idiom to Higher Order 
+\subsection{Scatter, matrix of scatter, scagnostics}                                        
+\subsection{Quiver, Flow, Spaghetti, Lasagna}
+\subsection{BoxPlots, Functional Box Plots, Countour Box Plots}                                      
 
-\subsection{Visualization Toolkits}
+
+Countour Boxplots \cite are a cross between boxplots and the  
+\subsection{Maps & Heatmaps -> Glyphs}     
+
+
+\subsection{Let's Jam all the simple together as Toolkits}
 Some research institutions provide a tool to explore data they created, such as the \cite{src:esrlpsd}, but since all these tools are site specific, a researcher would either have to use the datasets on the website or submit their datasets for uploading 
 (assuming their dataset meets the submission criteria for an aggregation site). A scientist also has the option of using the CDAT suite of libraries, developed by the \cite{WilliamsEtAl13}, GrADS, \cite{src:grads},and Ferret, \cite{src:HankinEtAl96}. The major critique with all of these though is that they mostly render the data as is, with limited support for statistical analysis and the application of typical meterological analysis. Support for even common machine learning techniques often requires extending the library; therefore for the purpose of this discussion it is somewhat useful to treat these tools more as plotting libraries than visualization systems. %%somewhere scope out/differentiate between plotting and viz
 
-
-%%pull these papers out of SunZhou
-\subsection{Temporal Trajectory Analysis}
-\subsection{Spatial Pattern Indices}
-
-%%this paper is kinda terrible and I should probably not use it
-Many analysis and visualizations of climate data rely on machine learning techniques such as clustering, but they treat each observation as independent or they do not ascertain if a pixel affects its neighbor. Lin, Xie, Song, and Wu explore those relationships through a tight clustering method that is evaluated using a Value-Process measurement  \cite{LinXieSongWu09}. 
-
-They first create a matrix of the form time stamp by measurement for each location (latitude, longitude pair) on earth. The temporal resolution is monthly from 1901 to 200 and the measurements are similarity estimation, temperature, precipitation, annual amplitude of temperature, annual amplitude of precipitation. They apply a principal component to each of these matrices to extract the first principal component, which is what they then use to filter our dissimilar points within a radius R of the point. They then refine their filter by computing the distance between the remaining points using the Pearson product moment correlation coefficient. Afterwards they draw a similarity graph amongst the remaining points. 
-
-A fairly common problem in visualizing spatio-temporal data is to visualize changes in land ise and cover-whether the land gets drier or more covered with vegetation-over time. Since there are many techniques that will show the temporal dynamics over time, Sun and Zhou \cite{SunZhou16} developed a method to quantify and visualize how both the time and neighboring pixels effected changes in the land cover in the Yuli County in the Xinjiang Uygur
-Autonomous Region of western China. 
-
-Sun and Zhou acquired data from four satellites over a period of time where vegetation would strongly stand out from other land types; they then classified the land types in the satellite images into one of 6 classes using a Maximum Likelihood Classifier and finally merged the the six classes into either farmland or other. They coded farmland as a binary 1 and others as 0 to create a binary image for each timestamp and then computed the trajectory of each pixel by examining the change in class of each pixel over time. Because the set of all possible trajectories was too large to feasibly look at, they generalized the trajectories to four categories based on whether it had changed from one state to another and how long it had stayed in that state. They then visualized these trajectories by assigning a color to each of the most common ones and placing it on a heat map, essentially encoding distinct temporal patterns using colors. 
-
-
-
-\section{Ensemble Visualizations}
-Ensemble models are a special case of spatio-temporal visualizations; they are created by running the same model (often a time dependent one) using different initial conditions. Each of the resulting set of modeled data is called a member of the ensemble. Ensembles have the same spatio-temperoal data visualization difficulties as any other spatio-temporally varying dataset and the added complication of incorporating the information gained from using an ensemble of models rather than a singular model. 
-
-
-
-
-%%Nir paper? (My work)
 
 \section{Conclusion}
 \label{sec:conclusion}
