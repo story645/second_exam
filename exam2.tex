@@ -73,9 +73,16 @@ This poses a difficult visualization task because the researcher is trying to ca
 \subsection{Scatter, matrix of scatter, scagnostics}                                        
 \subsection{Quiver, Flow, Spaghetti, Lasagna}
 \subsection{BoxPlots, Functional Box Plots, Countour Box Plots}                                      
+A box plot is a really simple measure of uncertainity: there's a line and then two bars represent the uncertainity of that point. %insert image
+While this is fairly readable for small datasets, %%\cite{} argues that the upper limit is x/y/z. 
 
 
-Countour Boxplots \cite are a cross between boxplots and the  
+
+
+Countour Boxplots \cite{Whitaker2013} are an extension of boxplots that tries to better encapsulate outliers. Box plots inherently clip the uncertainity they show to some upper and lower band, 
+creating a somewhat bounding envelope for the function that looks fairly regular when aggregated. Countour boxplots aim instead to capture the variablity of the uncertainity by trading in descripting
+statistics for a measure called band depth. Each ensemble members band depth is computed as sum of the probabilities that the observations in any given ensemble fall within the max-min envelope defined by any two other ensembles. The bands are then sorted by band depth such that the median is the ensemble with about 50\% of its members withen all envelopes formed by other bands (so most centered). Outer bands are chosen according to the task at hand. In \cite{Whitaker2013}, they apply the countour boxplots to temperature visualizations. %%insert figures here. 
+The authors argue that countour boxplots are an improved visual idiom over the traditional spagehttie plots seen in (fig) because as seen in (fig), the spagehetti plots get nosy as the number of plots increase and so it's hard to tease out specific patterns. Instead in (fig3), the authors remove most of the bands and instead visualize an outliser envelope(light gray) and a more central envelope(dark gray). It retains much of the information of the spagethhit, but removes the visual noise of the lines.  
 \subsection{Maps & Heatmaps -> Glyphs}     
 
 
