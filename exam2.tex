@@ -8,15 +8,40 @@
 %\usepackage{setspace}
 %\onehalfspace
 
-\title{Visualizing Relationships Amongst and With Climate Ensembles}
+\title{Contextualizing Climate Ensembles}
 \author{Hannah Aizenman}
 \committee{ Dr. Michael Grossberg(Advisor), Robert Haralick, Huy Vo}
 \submitted{}
-\abstract{Climate datasets often inherently try to encapsulate complex systems. The variables are often high dimensional and often have long ranging interactions both temporally and spatially. Ensemble climate models often add another layer to the complexity because they add uncertainty to the already complex interactions. Scientists often try to visualize these interactions either by attempting to encode many if them in a visualization, using a machine learning algorithm to model the interaction and traditional approaches to visualize them, or building out a complex toolkit that relies on users to compare graphs of each of the sub interactions to build out the relationships. Tamara'Munzner's domain-task-idiom framework can be an effective way of grouping the visualization techniques that have become dominant in the ensemble evaluation community and understanding what it is they're trying to accomplish.}
+\abstract{
+  Problem: Ensembles inherently encode uncertainity since they are different
+  variations on the same model. While there are many ways to visualize
+  ensembles, and the uncertianity in the ensembles, these visualizations are
+  often at least a step or two removed from what is happening in the real
+  world. 
+  Importance: Climate & weather ensembles are widley used by scientists and
+  policy makers to evaluate risk; this is readily seen in Hurrican season when
+  governor's have to decide on whether to move people based on how sure they
+  are that the model's predictions are really accurate. Decontextualized
+  visualizations that are more about the method than the data can occlude this
+  decision process. 
+  
+  Solution: THere are a kitchen sinks worth of methods and toolkits for
+  visualizing ensembles, but the best ones clearly articulate the
+  spatio-temporal relationships in the ensembles and between the variables such
+  that the user can definitively parse out what a line or dot is saying about
+  the temperature in New Jersey.  
+}
+
 \begin{document}
 \makefrontmatter
 
 \section{Introduction}
+
+``Contextualize all the things'' is important. Tufte stresses it because he's
+confirmatory, but Munzner's exploratray task-data-idiom approach is also
+grounded in it. This is because while very pretty visualizations look well
+pretty, at the end of the day they're semi-useless if there are too many steps
+removed between the visualization and the underlying data. 
 
 %Large datasets of climate and weather data are being produced from multiple sources. With cheaper and increased computer power, and cheaper disk storage, it is now possible to more easily create long model simulations at higher resolutions. Increasingly  high 
 %resolution satellite data and reanalysis projects which blend both model prediction and measurements create readily available large uniformly sampled spatio-temporal resolution datasets. Measured data from networks of ground stations and proxy data from trees, 
