@@ -1,4 +1,5 @@
 \documentclass[letterpaper,onecolumn,titlepage]{Ythesis}
+\usepackage{import}
 \usepackage{siunitx}
 \usepackage{amsmath}
 \usepackage{url}
@@ -8,28 +9,14 @@
 %\usepackage{setspace}
 %\onehalfspace
 
-\title{Contextualizing Climate Ensembles}
+\title{Visualizing Multivariate PDFs}
 \author{Hannah Aizenman}
 \committee{ Dr. Michael Grossberg(Advisor), Robert Haralick, Huy Vo}
 \submitted{}
 \abstract{
-  Problem: Ensembles inherently encode uncertainity since they are different
-  variations on the same model. While there are many ways to visualize
-  ensembles, and the uncertianity in the ensembles, these visualizations are
-  often at least a step or two removed from what is happening in the real
-  world. 
-  Importance: Climate & weather ensembles are widley used by scientists and
-  policy makers to evaluate risk; this is readily seen in Hurrican season when
-  governor's have to decide on whether to move people based on how sure they
-  are that the model's predictions are really accurate. Decontextualized
-  visualizations that are more about the method than the data can occlude this
-  decision process. 
-  
-  Solution: While there are many worth of methods and toolkits for
-  visualizing ensembles, the best ones clearly articulate the
-  spatio-temporal relationships in the ensembles and between the variables such
-  that the user can definitively parse out what a line or dot is saying about
-  the temperature in New Jersey.  
+  Problem:
+  Importance:
+  Solution:
 }
 
 \begin{document}
@@ -37,22 +24,7 @@
 
 \section{Introduction}
 
-``Contextualize all the things'' is important. Tufte stresses it because he's
-confirmatory, but Munzner's exploratray task-data-idiom approach is also
-grounded in it. This is because while very pretty visualizations look well
-pretty, at the end of the day they're semi-useless if there are too many steps
-removed between the visualization and the underlying data. 
-
-%Large datasets of climate and weather data are being produced from multiple sources. With cheaper and increased computer power, and cheaper disk storage, it is now possible to more easily create long model simulations at higher resolutions. Increasingly  high 
-%resolution satellite data and reanalysis projects which blend both model prediction and measurements create readily available large uniformly sampled spatio-temporal resolution datasets. Measured data from networks of ground stations and proxy data from trees, 
-%glaciers, oceans, corals, fossils, and historical records are also becoming more accessible, 
-%yielding sometimes irregularly sampled data that provides a host of 
-%information on climate variability. The great size of many of these data sets mean that just providing a download link does not really make the data accessible to the public or even other scientists. It is important for the scientists who produce the data to have a way to make it explorable.. 
-
-And that those explorations are understandable...while many papers(\cite{Munzner} \cite{Acquired Codes} \cite{...}discuss how more complex tasks inherently encourage more complex visualizations, they also warn that more complex visual idioms are often more difficult to understand and so they may not be beneficial. Some authors though discuss how highly specialized dashboards may be more productive once specialists are trained on the software.
-
-
-Munzner \cite{Munzner14} defines a time-varying dataset as one in which time is an intrinsic attribute of how the various observations are measured; for example recording snow fall every 3 hours or stock prices at the beginning or end of day. She contrasts this with datasets that are amassed over time where the length of the record does not intrinsically mean the data is time varying; for example [insert something that isn't horse racing] 
+Munzner \cite{Munzner14ii} defines a time-varying dataset as one in which time is an intrinsic attribute of how the various observations are measured; for example recording snow fall every 3 hours or stock prices at the beginning or end of day. She contrasts this with datasets that are amassed over time where the length of the record does not intrinsically mean the data is time varying; for example [insert something that isn't horse racing] 
 
 Often the observations in these time-varying datasets are also spatially varying, spreading over the earth or the brain or another variable space where all the observations in the high dimensional space are of the same unit. %%note: must get some reference/notation/way to discuss this
 
@@ -63,60 +35,15 @@ This poses a difficult visualization task because the researcher is trying to ca
 	\item a mixture thereof: does snowfall in New York on the 9th affect snowfall in New Jersey on the 10th?
 \end{enumerate}
 
-\section{Visualizing Data & Distributions}
-
-Line, Scatter, Heat...end on the histogram
-
-\section{Visualizing Uncertainty}
-
-While bar graphs and histograms start giving a sense of the variability in
-data, they are limited to showing the dispersion of the data only in 1
-dimension; namely the measureents themselves. To explore more dimensions,
-Tukey introduced the box and whiskers plot \cite{Tukey1970, Tukey1977}. It
-takes the distributional information of a histogram and encodes the summary
-statistics in a box and outlier information as whiskers coming out of the box,
-as seen in %make a figure that shows how a histogram gets encoded as a box and
-%whisker.
-The advantage of the boxplot is that these boxes can then be strung together,
-such that changes in a distribution over time (%show lineplot w/ box & whisker)
-or differences over time can be compared. In their survey of the history of the
-boxplot \cite{Wickham2011} Wickham and Stryjewski trace the evolution of the
-boxplot from a difinitive box to amorphous envelopes.  They start by laying out
-the core statistics of a boxplot: a box centered at the median (or mean) and
-bound by the upper and lower quartiles, and two whiskers which represent the extremes
-(often 1.5 the outer quartiles, sometimes the \alpha bounds). Sometimes there's
-also a dot to signify outliers, as seen in \ref{imaginary figure}, but one of
-the strengths of the box plot has been in it's flexibility. Many authors have
-kept the basic structure, but used different quantile \cite{Hyndman}s or
-measures of extremes \cite{Frigge, carter} or used assymetric whiskers \cite{Rousseuw}
-or otherwise exploited the structure to incorporate skewness, kurtosis, and
-other descriptive distributional statsics \cite{ Aslam, choon, Marmelejo}
-%find papers not in Wickham
-
-Inferential information was incorporated through the notched boxplot. \cite{McGill} % find/print this
-% paper
-In this plot
-
-
-
-
-
-
-
-
-
-
-Countour Boxplots \cite{Whitaker2013} are an extension of boxplots that tries to better encapsulate outliers. Box plots inherently clip the uncertainity they show to some upper and lower band, 
-creating a somewhat bounding envelope for the function that looks fairly regular when aggregated. Countour boxplots aim instead to capture the variablity of the uncertainity by trading in descripting
-statistics for a measure called band depth. Each ensemble members band depth is computed as sum of the probabilities that the observations in any given ensemble fall within the max-min envelope defined by any two other ensembles. The bands are then sorted by band depth such that the median is the ensemble with about 50\% of its members withen all envelopes formed by other bands (so most centered). Outer bands are chosen according to the task at hand. In \cite{Whitaker2013}, they apply the countour boxplots to temperature visualizations. %%insert figures here. 
-The authors argue that countour boxplots are an improved visual idiom over the traditional spagehttie plots seen in (fig) because as seen in (fig), the spagehetti plots get nosy as the number of plots increase and so it's hard to tease out specific patterns. Instead in (fig3), the authors remove most of the bands and instead visualize an outliser envelope(light gray) and a more central envelope(dark gray). It retains much of the information of the spagethhit, but removes the visual noise of the lines.  
-\subsection{Maps & Heatmaps -> Glyphs}     
-
-
-\subsection{Let's Jam all the simple together as Toolkits}
-Some research institutions provide a tool to explore data they created, such as the \cite{src:esrlpsd}, but since all these tools are site specific, a researcher would either have to use the datasets on the website or submit their datasets for uploading 
-(assuming their dataset meets the submission criteria for an aggregation site). A scientist also has the option of using the CDAT suite of libraries, developed by the \cite{WilliamsEtAl13}, GrADS, \cite{src:grads},and Ferret, \cite{src:HankinEtAl96}. The major critique with all of these though is that they mostly render the data as is, with limited support for statistical analysis and the application of typical meterological analysis. Support for even common machine learning techniques often requires extending the library; therefore for the purpose of this discussion it is somewhat useful to treat these tools more as plotting libraries than visualization systems. %%somewhere scope out/differentiate between plotting and viz
-
+\section{Seperable Dimensions}
+\import{sections/}{seperable.tex}
+%%history of the boxplot and the like
+\section{Non-Seperable Dimensions}
+%%using machine learning to find seperable distributions in data/
+%%PCA, Clustering,ICA, Linear Manifold, etc...
+\section{Interdependent but Important Dimensions}
+%% Spatio Temporal Probabilitues - hurrican tracks yield curves 
+\section{Climate Visualization Toolkits}
 
 \section{Conclusion}
 \label{sec:conclusion}
