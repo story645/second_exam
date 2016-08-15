@@ -1,17 +1,26 @@
 While bar graphs and histograms start giving a sense of the variability in
 data, they are limited to showing the dispersion of the data only in 1
 dimension; namely the measureents themselves. To explore more dimensions,
-Tukey introduced the box and whiskers plot \cite{Tukey1970, Tukey1977}. It
-takes the distributional information of a histogram and encodes the summary
-statistics in a box and outlier information as whiskers coming out of the box,
-as seen in. %pull in more from Tukey
+Tukey introduced the box and whiskers plot \cite{tukey1977e}. The box and
+whisker plot takes the distributional information of a
+histogram and encodes the summary statistics in a box and outlier information as
+whiskers coming out of the box. While this is inherently useful, the
+information could have just as easily been shown in a histogram. The power of
+the boxplot is in that it facilitates the comparison of multiple distributions:
+\begin{figure}
+%% side by side  boxplot comparsions of random data?
+\end{figure}
 
-%make a figure that shows how a histogram gets encoded as a box and
-%whisker.
+Where the box and whisker plot really shines is in comparing the extreme
+values because they are represented as lines from the center and therefore the
+length of the two lines can be compared \cite{tukey1977e}.  Also, by
+translating the distribution statistics to a visual representation, the
+outliers are proportioanlly scaled to the mean and standard, which gives a
+sense of how the summary stats relate to each other that is sometimes lost in
+numerical calculations when the numbers are small or close to each
+other. %%probably needs a citation
 
-The advantage of the boxplot is that these boxes can then be strung together,
-such that changes in a distribution over time (%show lineplot w/ box & whisker)
-or differences over time can be compared. In their survey of the history of the
+In their survey of the history of the
 boxplot \cite{Wickham2011} Wickham and Stryjewski trace the evolution of the
 boxplot from a difinitive box to amorphous envelopes.  They start by laying out
 the core statistics of a boxplot: a box centered at the median (or mean) and
