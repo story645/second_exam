@@ -4,8 +4,11 @@ dimension; namely the measureents themselves. To explore more dimensions,
 Tukey introduced the box and whiskers plot \cite{Tukey1970, Tukey1977}. It
 takes the distributional information of a histogram and encodes the summary
 statistics in a box and outlier information as whiskers coming out of the box,
-as seen in %make a figure that shows how a histogram gets encoded as a box and
+as seen in. %pull in more from Tukey
+
+%make a figure that shows how a histogram gets encoded as a box and
 %whisker.
+
 The advantage of the boxplot is that these boxes can then be strung together,
 such that changes in a distribution over time (%show lineplot w/ box & whisker)
 or differences over time can be compared. In their survey of the history of the
@@ -22,9 +25,15 @@ or otherwise exploited the structure to incorporate skewness, kurtosis, and
 other descriptive distributional statsics \cite{ Aslam, choon, Marmelejo}
 %find papers not in Wickham
 
+%notched boxplot
+
+
+
+
+
 Inferential information was incorporated through the notched boxplot. \cite{McGill} % find/print this
-% paper
-In this plot
+% paper variations
+In this plot 
 
 
 
@@ -33,8 +42,9 @@ In this plot
 
 
 
+%letter value plots
 
-
+%bagplots-> 
 Countour Boxplots \cite{Whitaker2013} are an extension of boxplots that tries to better encapsulate outliers. Box plots inherently clip the uncertainity they show to some upper and lower band, 
 creating a somewhat bounding envelope for the function that looks fairly regular when aggregated. Countour boxplots aim instead to capture the variablity of the uncertainity by trading in descripting
 statistics for a measure called band depth. Each ensemble members band depth is computed as sum of the probabilities that the observations in any given ensemble fall within the max-min envelope defined by any two other ensembles. The bands are then sorted by band depth such that the median is the ensemble with about 50\% of its members withen all envelopes formed by other bands (so most centered). Outer bands are chosen according to the task at hand. In \cite{Whitaker2013}, they apply the countour boxplots to temperature visualizations. %%insert figures here. 

@@ -23,17 +23,26 @@
 \makefrontmatter
 
 \section{Introduction}
+In \cite{tukey1975m} Tukey lays out the case for exploratory data analysis when
+he says ``The picturing of data must be sensitive, not only to the multiple hypotheses
+we hold, but to the many more we have not yet thought of, regard as unlikely or
+think impossible''. He advocates breaking from a deterministic \mathbox{y=mx+b}
+best fit line approach where the b is treated as an afterthough to a more
+nuanced
+\begin{align*}
+  given = fit PLUS residual
+\end{align*}
+explicitly to bring attention to the residuals. Tukey is arguing that it's not
+good enough to just look at the path of the data but also at the variation in
+the path. In some sense this is the fundemental disctinction between
+confirmatory data analysis and exploratary data analysis; whereas the former
+intends to display a picture that supports a hypothesis (such as that best fit
+line that shows the direction of the data), the latter's purpose is to
+facilitate investigation of the data (and the hypothesis). To explore data, it
+is crucial to understand the shape of the data, which can be done using a
+number of exploratory visualzation techniques. These can be subdvided into:
 
-Munzner \cite{Munzner14ii} defines a time-varying dataset as one in which time is an intrinsic attribute of how the various observations are measured; for example recording snow fall every 3 hours or stock prices at the beginning or end of day. She contrasts this with datasets that are amassed over time where the length of the record does not intrinsically mean the data is time varying; for example [insert something that isn't horse racing] 
 
-Often the observations in these time-varying datasets are also spatially varying, spreading over the earth or the brain or another variable space where all the observations in the high dimensional space are of the same unit. %%note: must get some reference/notation/way to discuss this
-
-This poses a difficult visualization task because the researcher is trying to capture multiple levels of interaction:
-\begin{enumerate}
-	\item intraobservational: snowfall in New York and snowfall in New Jersey on August 9th 2015)
-	\item interobservational: global snowfall on August 9th and August 10th
-	\item a mixture thereof: does snowfall in New York on the 9th affect snowfall in New Jersey on the 10th?
-\end{enumerate}
 
 \section{Seperable Dimensions}
 \import{sections/}{seperable.tex}
