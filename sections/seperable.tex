@@ -1,38 +1,43 @@
 While bar graphs and histograms start giving a sense of the variability in
 data, they are limited to showing the dispersion of the data only in 1
-dimension; namely the measureents themselves. To explore more dimensions,
-Tukey introduced the box and whiskers plot \cite{tukey1977e}. The box and
-whisker plot takes the distributional information of a
-histogram and encodes the summary statistics in a box and outlier information as
-whiskers coming out of the box. While this is inherently useful, the
-information could have just as easily been shown in a histogram. The power of
-the boxplot is in that it facilitates the comparison of multiple distributions:
-\begin{figure}
-%% side by side  boxplot comparsions of random data?
-\end{figure}
-
-Where the box and whisker plot really shines is in comparing the extreme
-values because they are represented as lines from the center and therefore the
-length of the two lines can be compared \cite{tukey1977e}.  Also, by
-translating the distribution statistics to a visual representation, the
-outliers are proportioanlly scaled to the mean and standard, which gives a
-sense of how the summary stats relate to each other that is sometimes lost in
-numerical calculations when the numbers are small or close to each
-other. %%probably needs a citation
-
-In their survey of the history of the
-boxplot \cite{Wickham2011} Wickham and Stryjewski trace the evolution of the
-boxplot from a difinitive box to amorphous envelopes.  They start by laying out
+dimension; namely the measurements themselves. In their survey of the history
+of the boxplot \cite{wickham11} Wickham and Stryjewski trace the evolution of
+the boxplot from a difinitive box to amorphous envelopes.  They start by laying out
 the core statistics of a boxplot: a box centered at the median (or mean) and
-bound by the upper and lower quartiles, and two whiskers which represent the extremes
-(often 1.5 the outer quartiles, sometimes the \alpha bounds). Sometimes there's
-also a dot to signify outliers, as seen in \ref{imaginary figure}, but one of
+bound by the upper and lower quartiles (termed the hinges), and two whiskers which represent the
+extremes (often 1.5 the outer quartiles, sometimes the \alpha bounds). Sometimes there's
+also a dot to signify outliers, as seen in \ref{fig:boxplot}, but one of
 the strengths of the box plot has been in it's flexibility. Many authors have
 kept the basic structure, but used different quantile \cite{Hyndman}s or
-measures of extremes \cite{Frigge, carter} or used assymetric whiskers \cite{Rousseuw}
-or otherwise exploited the structure to incorporate skewness, kurtosis, and
-other descriptive distributional statsics \cite{ Aslam, choon, Marmelejo}
-%find papers not in Wickham
+measures of extremes \cite{Frigge, carter} or used assymetric
+whiskers \cite{Rousseuw} or otherwise exploited the structure to incorporate skewness, kurtosis, and
+other descriptive distributional statsics \cite{ Aslam, choon, Marmelejo}. 
+
+\begin{figure}
+\includegraphics{figs/boxplot.png}
+\caption{Tukey's 1977 example of the box plot (exhibit 6 of chapter 2 from
+Exploratory Data Analytics\cite{tukey77e}) illustrates how the box plot shows the distribution of topology of states and
+the distribution of volcanos. The strength of the box and whisker is that the
+reader can quickly compare the two distributions and learn, for example, that
+volcanos tend to span a shorter range of average heights, but that the extremes
+are much further from the center. Essentially, the distributions act as
+references for the other displayed distributions.}
+\label{fig:boxplot}
+\end{figure}
+
+In Tukey's introduction to the boxplot \cite{tukey77e}, shown in figure~\ref{fig:boxplot}, the box and whisker plot takes the
+distributional information of a histogram and encodes the state heights between the
+25th and 75th percentiles as a box, the median height as a line cutting across
+the heights, and the extreme state heights as lines coming out of the
+boxes. While a histogram would also show that the distribution of state heights has a fat right tail,
+the power of the box and whisker plot is in encoding this information such that
+it's trivial to compare to it's neighboring distribution of volcano
+heights because they can share the Y-axis. As the number of distributions grow,
+this technique becomes invaluable because the number of histograms that can be
+placed next to each other or overlayed as pdfs can quickly become
+unweildy. And for wider distributions like the state heights, it can sometimes
+be difficult to pinpoint the median without additional annotations. 
+
 
 %notched boxplot
 
@@ -53,8 +58,14 @@ In this plot
 
 %letter value plots
 
-%bagplots-> 
-Countour Boxplots \cite{Whitaker2013} are an extension of boxplots that tries to better encapsulate outliers. Box plots inherently clip the uncertainity they show to some upper and lower band, 
+
+%bagplots->
+
+\begin{figure}
+\includegraphics{figs/countour_weather.png}
+\label{fig:countour}
+\end{figure}
+Countour Boxplots \cite{whitaker13} are an extension of boxplots that tries to better encapsulate outliers. Box plots inherently clip the uncertainity they show to some upper and lower band, 
 creating a somewhat bounding envelope for the function that looks fairly regular when aggregated. Countour boxplots aim instead to capture the variablity of the uncertainity by trading in descripting
-statistics for a measure called band depth. Each ensemble members band depth is computed as sum of the probabilities that the observations in any given ensemble fall within the max-min envelope defined by any two other ensembles. The bands are then sorted by band depth such that the median is the ensemble with about 50\% of its members withen all envelopes formed by other bands (so most centered). Outer bands are chosen according to the task at hand. In \cite{Whitaker2013}, they apply the countour boxplots to temperature visualizations. %%insert figures here. 
-The authors argue that countour boxplots are an improved visual idiom over the traditional spagehttie plots seen in (fig) because as seen in (fig), the spagehetti plots get nosy as the number of plots increase and so it's hard to tease out specific patterns. Instead in (fig3), the authors remove most of the bands and instead visualize an outliser envelope(light gray) and a more central envelope(dark gray). It retains much of the information of the spagethhit, but removes the visual noise of the lines.  
+statistics for a measure called band depth. Each ensemble members band depth is computed as sum of the probabilities that the observations in any given ensemble fall within the max-min envelope defined by any two other ensembles. The bands are then sorted by band depth such that the median is the ensemble with about 50\% of its members withen all envelopes formed by other bands (so most centered). Outer bands are chosen according to the task at hand. In \cite{whitaker13}, they apply the countour boxplots to temperature visualizations. %
+The authors argue that countour boxplots are an improved visual idiom over the traditional spagehttie plots seen in \ref{fig:countour} because as seen in (fig), the spagehetti plots get nosy as the number of plots increase and so it's hard to tease out specific patterns. Instead in (fig3), the authors remove most of the bands and instead visualize an outliser envelope(light gray) and a more central envelope(dark gray). It retains much of the information of the spagethhit, but removes the visual noise of the lines.  
