@@ -33,14 +33,33 @@ heights because they can share the Y-axis. As the number of distributions grow,
 this technique becomes invaluable because the number of histograms that can be
 placed next to each other or overlayed as pdfs can quickly become
 unweildy.  Many others authors have kept the basic structure of the boxplot,
-but exploited the structure to convey more information about the data. Authors
-have incorporated sample size through box width \cite{mcgill1978}, used
+but exploited the structure to convey more information about the data. Authors used
 different quantile levels \cite{Hyndman}s or measures or extremes\cite{Frigge,
 carter}, proposed assymetric whiskers \cite{Rousseuw}, and otherwise incorporated skewness, kurtosis, and other descriptive distributional statsics \cite{ Aslam, choon, Marmelejo}.
 
 
-The box-plot was then expanded out from descriptive statistics to inferential
-information through the notched boxplot. \cite{mcgill1978} 
+\begin{figure}
+%%\includegraphic{Mcgill} #annottate figure with highlighted line for the notches!
+\label{fig:notched}
+\end{figure}
+The box-plot was then expanded out from descriptive statistics to facilitatting
+inferential deduction through the notched boxplot. \cite{mcgill1978} The notched boxplot
+arose as an expansion of indicating sample size through the width of the box,
+which is a technique that only works well for relatively small sample sizes (\<
+1000), at larger scales the widths are about equal. Instead, notches, as seen
+in Figure~\ref{fig:notched}, are used to indicate the confidence level of the
+median for that box. The medians are statistically different from each other at
+the 95\% confidence level if the notches do not overlap. In
+Figure~\ref{fig:notched}, all the notches overlap %%annotate figure with what
+%%overlapping region means
+and so the difference in telephone bills is not-significant, but there's a
+statistically significant difference between the 11-15 and over 15 groups. Notches may extend
+beyond the box edges, and sometimes the width technique is incorporated back
+into the notched boxpplot such that the confidence can be grounded in sample
+size. The notches in Figure~\ref{fig:notched} are computed assuming a gaussian
+distribution, but many authors \cite{x,y,z} discuss ways to compute notches for
+non-gaussian distributions. 
+\end{align}
 
 
 
