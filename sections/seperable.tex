@@ -5,7 +5,7 @@ of the boxplot \cite{wickham11} Wickham and Stryjewski trace the evolution of
 the boxplot from a difinitive box to amorphous envelopes.  They start by laying out
 the core statistics of a boxplot: a box centered at the median (or mean) and
 bound by the upper and lower quartiles (termed the hinges), and two whiskers which represent the
-extremes (often 1.5 the outer quartiles, sometimes the \alpha bounds). Sometimes there's
+extremes (often 1.5 the outer quartiles, sometimes the $\alpha$ bounds). Sometimes there's
 also a dot to signify outliers, as seen in \ref{fig:boxplot}, but one of
 the strengths of the box plot has been in it's flexibility. 
 
@@ -65,6 +65,7 @@ non-gaussian distributions.
 %%\includegraphics{benjamini}
 \label{fig:histplot}
 \label{fig:vase}
+\label{fig:violin}
 \end{figure}
 
 Because the box-plot does not give any indication of how data is distributed
@@ -79,22 +80,50 @@ dependent on what sort of density estimation method is used, such as kernal
 estimation or nearest neighbor estimation \cite{chambers1983}. The
 violinplot \cite{hintz1998} expands this concept further by representing the
 width using the density-trace method proposed by Chambers
-et. al \cite{chambers1983}%%is density trace the same as a pdf? 
+et. al \cite{chambers1983}, as seen in Figure~\ref{fig:violinplot}%%is density
+%%trace the same as a pdf?
+The letter-value plot\cite{hofmann} ....
+
+
+%Find roussouw 1999 bagplot paper...
+
+\begin{figure}
+%%\includegraphics{bagplot}
+\end{figure}
+The boxplot is inherently limited to 1D data; the bagplot was introduced to
+visualize 2D and higher data \cite{roussow99}.
+
+\begin{figure}
+%%\includegraphics
+\end{figure}
+While boxplots were designed to visualize discrete observations, often there
+are no discrete observations and instead the `observation` is a timeseries
+curve (where the connections are as important as the individual points) or
+spatial region. To visualize these datasets, Hyndman and Shang proposed the
+rainbow plot, functional bagplot and high density region (HDR)
+plot\cite{Hyndman2009}. These visualizations rely on the idea of ordering the
+functions such that there's some measure of how close these functions are to
+each other-functional depth\cite{fabrero2007}, bivariate score depth, and
+bivariate kernel density estimation\cite{scott92} are some examples. This
+ordering then yields functional analogs to median and other percentile
+metrics. The rainbow plot simply colors the data based on its depth, shown
+in \ref{fig:rainbow}
+
+\begin{figure}
+%%\includegraphics{abc}
+\end{figure}
 
 
 
+The functional boxplot was developed to describe the distributional nature of functional data\cite{sun2011}. 
 
-
-%letter value plots
-
-
-%bagplots->
 
 \begin{figure}
 \includegraphics{figs/countour_weather.png}
 \label{fig:countour}
 \end{figure}
-Countour Boxplots \cite{whitaker13} are an extension of boxplots that tries to better encapsulate outliers. Box plots inherently clip the uncertainity they show to some upper and lower band, 
-creating a somewhat bounding envelope for the function that looks fairly regular when aggregated. Countour boxplots aim instead to capture the variablity of the uncertainity by trading in descripting
-statistics for a measure called band depth. Each ensemble members band depth is computed as sum of the probabilities that the observations in any given ensemble fall within the max-min envelope defined by any two other ensembles. The bands are then sorted by band depth such that the median is the ensemble with about 50\% of its members withen all envelopes formed by other bands (so most centered). Outer bands are chosen according to the task at hand. In \cite{whitaker13}, they apply the countour boxplots to temperature visualizations. %
+Countour Boxplots \cite{whitaker13} are an extension of functional boxplots that tries to better encapsulate outliers. Box plots inherently clip the uncertainity they show to some upper and lower band, 
+creating a somewhat bounding envelope for the function that looks fairly
+regular when aggregated. Countour boxplots aim instead to capture the
+variablity of the uncertainity via a band depth ordering metric. Each ensemble members band depth is computed as sum of the probabilities that the observations in any given ensemble fall within the max-min envelope defined by any two other ensembles. The bands are then sorted by band depth such that the median is the ensemble with about 50\% of its members withen all envelopes formed by other bands (so most centered). Outer bands are chosen according to the task at hand. In \cite{whitaker13}, they apply the countour boxplots to temperature visualizations. %
 The authors argue that countour boxplots are an improved visual idiom over the traditional spagehttie plots seen in \ref{fig:countour} because as seen in (fig), the spagehetti plots get nosy as the number of plots increase and so it's hard to tease out specific patterns. Instead in (fig3), the authors remove most of the bands and instead visualize an outliser envelope(light gray) and a more central envelope(dark gray). It retains much of the information of the spagethhit, but removes the visual noise of the lines.  
