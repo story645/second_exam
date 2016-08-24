@@ -7,16 +7,13 @@ the core statistics of a boxplot: a box centered at the median (or mean) and
 bound by the upper and lower quartiles (termed the hinges), and two whiskers which represent the
 extremes (often 1.5 the outer quartiles, sometimes the \alpha bounds). Sometimes there's
 also a dot to signify outliers, as seen in \ref{fig:boxplot}, but one of
-the strengths of the box plot has been in it's flexibility. Many authors have
-kept the basic structure, but used different quantile \cite{Hyndman}s or
-measures of extremes \cite{Frigge, carter} or used assymetric
-whiskers \cite{Rousseuw} or otherwise exploited the structure to incorporate skewness, kurtosis, and
-other descriptive distributional statsics \cite{ Aslam, choon, Marmelejo}. 
+the strengths of the box plot has been in it's flexibility. 
 
 \begin{figure}
 \includegraphics{figs/boxplot.png}
 \caption{Tukey's 1977 example of the box plot (exhibit 6 of chapter 2 from
-Exploratory Data Analytics\cite{tukey77e}) illustrates how the box plot shows the distribution of topology of states and
+Exploratory Data Analytics\cite{tukey77e}) illustrates how the box plot shows
+the distribution of topology of states and
 the distribution of volcanos. The strength of the box and whisker is that the
 reader can quickly compare the two distributions and learn, for example, that
 volcanos tend to span a shorter range of average heights, but that the extremes
@@ -25,8 +22,8 @@ references for the other displayed distributions.}
 \label{fig:boxplot}
 \end{figure}
 
-In Tukey's introduction to the boxplot \cite{tukey77e}, shown in figure~\ref{fig:boxplot}, the box and whisker plot takes the
-distributional information of a histogram and encodes the state heights between the
+In Tukey's introduction to the boxplot \cite{tukey77e}, shown in
+figure~\ref{fig:boxplot}, the box and whisker plot takes the distributional information of a histogram and encodes the state heights between the
 25th and 75th percentiles as a box, the median height as a line cutting across
 the heights, and the extreme state heights as lines coming out of the
 boxes. While a histogram would also show that the distribution of state heights has a fat right tail,
@@ -35,20 +32,15 @@ it's trivial to compare to it's neighboring distribution of volcano
 heights because they can share the Y-axis. As the number of distributions grow,
 this technique becomes invaluable because the number of histograms that can be
 placed next to each other or overlayed as pdfs can quickly become
-unweildy. And for wider distributions like the state heights, it can sometimes
-be difficult to pinpoint the median without additional annotations. 
+unweildy.  Many others authors have kept the basic structure of the boxplot,
+but exploited the structure to convey more information about the data. Authors
+have incorporated sample size through box width \cite{mcgill1978}, used
+different quantile levels \cite{Hyndman}s or measures or extremes\cite{Frigge,
+carter}, proposed assymetric whiskers \cite{Rousseuw}, and otherwise incorporated skewness, kurtosis, and other descriptive distributional statsics \cite{ Aslam, choon, Marmelejo}.
 
 
-%notched boxplot
-
-
-
-
-
-Inferential information was incorporated through the notched boxplot. \cite{McGill} % find/print this
-% paper variations
-In this plot 
-
+The box-plot was then expanded out from descriptive statistics to inferential
+information through the notched boxplot. \cite{mcgill1978} 
 
 
 
