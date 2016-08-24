@@ -59,9 +59,27 @@ into the notched boxpplot such that the confidence can be grounded in sample
 size. The notches in Figure~\ref{fig:notched} are computed assuming a gaussian
 distribution, but many authors \cite{x,y,z} discuss ways to compute notches for
 non-gaussian distributions. 
-\end{align}
 
+\begin{figure}
+%%two figs a and b with a shared caption...
+%%\includegraphics{benjamini}
+\label{fig:histplot}
+\label{fig:vase}
+\end{figure}
 
+Because the box-plot does not give any indication of how data is distributed
+inside the box or along the whiskers, the histplot and vaseplot were introduced to indicate
+the density of the data\cite{benjamini1988}. As shown in
+Figure~\ref{fig:histplot} the histplot seperates the box
+into  5 bins and scales the width of that section of the box based on the
+number of values in that bin; it's essentially a rotated histogram. The
+vaseplot, shown in Figure~\ref{fig:vase} removes the bins and is instead based
+on the estimated density at that point in the data. The specific shape is
+dependent on what sort of density estimation method is used, such as kernal
+estimation or nearest neighbor estimation \cite{chambers1983}. The
+violinplot \cite{hintz1998} expands this concept further by representing the
+width using the density-trace method proposed by Chambers
+et. al \cite{chambers1983}%%is density trace the same as a pdf? 
 
 
 
