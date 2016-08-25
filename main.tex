@@ -1,14 +1,16 @@
 \documentclass[letterpaper,onecolumn,titlepage]{Ythesis}
-\usepackage{import}
-\usepackage{siunitx}
-\usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage{url}
-\sisetup{detect-weight=true, detect-family=true}
-\newcommand{\micron}[1] {\SI{#1}{\micro\meter}}
 
-%\usepackage{setspace}
-%\onehalfspace
+\usepackage{graphicx}
+\graphicspath{{sections/figs/}{.figs/}}
+
+\usepackage[backend=bibtex, style=ieee]{biblatex}
+\bibliography{main}
+
+\usepackage{subfiles}
+\usepackage{url}
+\usepackage{amsmath}
+
+
 
 \title{Visualizing Multivariate PDFs}
 \author{Hannah Aizenman}
@@ -42,8 +44,7 @@ highly dependent on the structure of the data, this paper explores techniques su
 possibly seperable but interdependent-and then uses this framework to evaluate
 distrubitional visualziation in recent climate visualization toolkits. 
 
-\section{Seperable Dimensions}
-\import{sections/}{seperable.tex}
+\subfile{sections/seperable.tex}
 %%history of the boxplot and the like
 \section{Non-Seperable Dimensions}
 %%using machine learning to find seperable distributions in data/
@@ -57,7 +58,5 @@ distrubitional visualziation in recent climate visualization toolkits.
 
 
 \pagebreak
-\bibliographystyle{abbrv}
-\bibliography{exam2}
-
+\printbibliography
 \end{document}
