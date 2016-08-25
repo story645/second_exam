@@ -1,3 +1,9 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\section{Seperable Dimensions}
+\label{sec:sepdim}
+
 While bar graphs and histograms start giving a sense of the variability in
 data, they are limited to showing the dispersion of the data only in 1
 dimension; namely the measurements themselves. In their survey of the history
@@ -9,8 +15,10 @@ extremes (often 1.5 the outer quartiles, sometimes the $\alpha$ bounds). Sometim
 also a dot to signify outliers, as seen in \ref{fig:boxplot}, but one of
 the strengths of the box plot has been in it's flexibility. 
 
+\subsection{Discrete observations}
+
 \begin{figure}
-\includegraphics{figs/boxplot.png}
+\includegraphics{boxplot}
 \caption{Tukey's 1977 example of the box plot (exhibit 6 of chapter 2 from
 Exploratory Data Analytics\cite{tukey1977}) illustrates how the box plot shows
 the distribution of topology of states and
@@ -23,7 +31,7 @@ references for the other displayed distributions.}
 \end{figure}
 
 In Tukey's introduction to the boxplot \cite{tukey1977}, shown in
-figure~\ref{fig:boxplot}, the box and whisker plot takes the distributional information of a histogram and encodes the state heights between the
+Figure~\ref{fig:boxplot}, the box and whisker plot takes the distributional information of a histogram and encodes the state heights between the
 25th and 75th percentiles as a box, the median height as a line cutting across
 the heights, and the extreme state heights as lines coming out of the
 boxes. While a histogram would also show that the distribution of state heights has a fat right tail,
@@ -37,15 +45,16 @@ but exploited the structure to convey more information about the data. Authors u
 different quantile levels \cite{Hyndman}s or measures or extremes\cite{Frigge,
 carter}, proposed assymetric whiskers \cite{Rousseuw}, and otherwise incorporated skewness, kurtosis, and other descriptive distributional statsics \cite{ Aslam, choon, Marmelejo}.
 
+\subsubsection{Incoporating Density}
 
 \begin{figure}
 %%\includegraphic{Mcgill} #annottate figure with highlighted line for the notches!
 \label{fig:notched}
 \end{figure}
-The box-plot was then expanded out from descriptive statistics to facilitatting
+The box-plot was then expanded out from descriptive statistics to facilitating
 inferential deduction through the notched boxplot. \cite{mcgill1978} The notched boxplot
 arose as an expansion of indicating sample size through the width of the box,
-which is a technique that only works well for relatively small sample sizes ($$\<1000$$), at larger scales the widths are about equal. Instead, notches, as seen
+which is a technique that only works well for relatively small sample sizes ($1\<1000$), at larger scales the widths are about equal. Instead, notches, as seen
 in Figure~\ref{fig:notched}, are used to indicate the confidence level of the
 median for that box. The medians are statistically different from each other at
 the 95\% confidence level if the notches do not overlap. In
@@ -84,6 +93,8 @@ via moving windowed average) proposed by Chambers et. al \cite{chambers1983}, as
 %%The letter-value plot\cite{hofmann} ....
 
 
+\subsubsection{2D Distributions}
+
 %Find roussouw 1999 bagplot paper...
 
 \begin{figure}
@@ -93,12 +104,14 @@ The boxplot is inherently limited to 1D data; the bagplot was introduced to
 visualize 2D and higher data \cite{roussow1999}.
 Bivariate HDR plot \cite{Hyndman1996}
 
+\subsection{Functional `observations`}
+
 While boxplots were designed to visualize discrete observations, often there
 are no discrete observations and instead the `observation` is a timeseries
 curve (where the connections are as important as the individual points) or
-spatial region. These visualizations rely on the idea of ordering the
-functions such that there's some measure of how close these functions are to
-each other-functional depth\cite{fabrero2007}, bivariate score depth\cite{hyndman2009}, and
+spatial region. Understanding the distributions of functional observations
+often relies first ordering the functions such that there's some measure of how
+close these functions are to each other-functional depth\cite{fabrero2007}, bivariate score depth\cite{hyndman2009}, and
 bivariate kernel density estimation\cite{scott92} are some examples. This
 ordering then yields functional analogs to median and other percentile
 metrics. For small values, the ordered curves can then be colored based on the
@@ -126,10 +139,12 @@ The functional boxplot was developed to describe the distributional nature of fu
 
 
 \begin{figure}
-%%\includegraphics{figs/countour_weather.png}
+\includegraphics{contour_weather}
 \label{fig:countour}
 \end{figure}
 While functional bag, box, and HDR plots all show outliers, each method is most
 successful visualizing a specific type of outlier. Countour
 boxplots\cite{whitaker2013} aim instead to capture the variablity of the uncertainity via a band depth ordering metric. Each ensemble members band depth is computed as sum of the probabilities that the observations in any given ensemble fall within the max-min envelope defined by any two other ensembles. The bands are then sorted by band depth such that the median is the ensemble with about 50\% of its members withen all envelopes formed by other bands (so most centered). Outer bands are chosen according to the task at hand. In \cite{whitaker2013}, they apply the countour boxplots to temperature visualizations. %
 The authors argue that countour boxplots are an improved visual idiom over the traditional spagehttie plots seen in \ref{fig:countour} because as seen in (fig), the spagehetti plots get nosy as the number of plots increase and so it's hard to tease out specific patterns. Instead in (fig3), the authors remove most of the bands and instead visualize an outliser envelope(light gray) and a more central envelope(dark gray). It retains much of the information of the spagethhit, but removes the visual noise of the lines.  
+\end{document}
+
