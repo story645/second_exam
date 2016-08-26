@@ -37,13 +37,14 @@ the heights, and the extreme state heights as lines coming out of the
 boxes. While a histogram would also show that the distribution of state heights has a fat right tail,
 the power of the box and whisker plot is in encoding this information such that
 it's trivial to compare to it's neighboring distribution of volcano
-heights because they can share the Y-axis. As the number of distributions grow,
+heights because they can share the Y axis. As the number of distributions grow,
 this technique becomes invaluable because the number of histograms that can be
 placed next to each other or overlayed as pdfs can quickly become
 unweildy.  Many others authors have kept the basic structure of the boxplot,
-but exploited the structure to convey more information about the data. Authors used
-different quantile levels \cite{Hyndman}s or measures or extremes\cite{Frigge,
-carter}, proposed assymetric whiskers \cite{Rousseuw}, and otherwise incorporated skewness, kurtosis, and other descriptive distributional statsics \cite{ Aslam, choon, Marmelejo}.
+but exploited the structure to convey more information about the data. Authors
+used different quantile levels \cite{hyndman1996}s or measures of outliers
+\cite{frigge1989}, or ways of identifying outliers\cite{carter2009, schwertman2004, schwertman2007}, or otherwise incorporated skewness,
+kurtosis, and other descriptive distributional statistics \cite{kim2004, hubert2008, marmolejo2015}.
 
 \subsubsection{Incoporating Density}
 
@@ -51,16 +52,17 @@ carter}, proposed assymetric whiskers \cite{Rousseuw}, and otherwise incorporate
 %%\includegraphic{Mcgill} #annottate figure with highlighted line for the notches!
 \label{fig:notched}
 \end{figure}
-The box-plot was then expanded out from descriptive statistics to facilitating
+The boxplot was then expanded out from descriptive statistics to facilitating
 inferential deduction through the notched boxplot. \cite{mcgill1978} The notched boxplot
 arose as an expansion of indicating sample size through the width of the box,
-which is a technique that only works well for relatively small sample sizes ($1\<1000$), at larger scales the widths are about equal. Instead, notches, as seen
+which is a technique that only works well for relatively small sample sizes (N
+less than 1000), at larger scales the widths are about equal. Instead, notches, as seen
 in Figure~\ref{fig:notched}, are used to indicate the confidence level of the
 median for that box. The medians are statistically different from each other at
 the 95\% confidence level if the notches do not overlap. In
 Figure~\ref{fig:notched}, all the notches overlap %%annotate figure with what
 %%overlapping region means
-and so the difference in telephone bills is not-significant, but there's a
+and so the difference in telephone bills is not significant, but there's a
 statistically significant difference between the 11-15 and over 15 groups. Notches may extend
 beyond the box edges, and sometimes the width technique is incorporated back
 into the notched boxpplot such that the confidence can be grounded in sample
@@ -88,21 +90,17 @@ dependent on what sort of density estimation method is used, such as kernal
 estimation or nearest neighbor estimation \cite{chambers1983}. The
 violinplot \cite{hintz1998} expands this concept further by representing the
 width using the density-trace method (which is a probability density estimation
-via moving windowed average) proposed by Chambers et. al \cite{chambers1983}, as seen in Figure~\ref{fig:violinplot}%%is density
-%%trace the same as a pdf?
-%%The letter-value plot\cite{hofmann} ....
+via moving windowed average) proposed by Chambers et. al \cite{chambers1983},
+as seen in Figure~\ref{fig:violinplot}
 
 
 \subsubsection{2D Distributions}
-
-%Find roussouw 1999 bagplot paper...
-
 \begin{figure}
 %%\includegraphics{bagplot}
 \end{figure}
 The boxplot is inherently limited to 1D data; the bagplot was introduced to
-visualize 2D and higher data \cite{roussow1999}.
-Bivariate HDR plot \cite{Hyndman1996}
+visualize 2D and higher data \cite{rousseeuw1999}
+Bivariate HDR plot \cite{hyndman1996} \textbf{expand with discussion of boxplot/HDR plot}
 
 \subsection{Functional `observations`}
 
@@ -111,8 +109,9 @@ are no discrete observations and instead the `observation` is a timeseries
 curve (where the connections are as important as the individual points) or
 spatial region. Understanding the distributions of functional observations
 often relies first ordering the functions such that there's some measure of how
-close these functions are to each other-functional depth\cite{fabrero2007}, bivariate score depth\cite{hyndman2009}, and
-bivariate kernel density estimation\cite{scott92} are some examples. This
+close these functions are to each other--functional depth\cite{febrero2007},
+bivariate score depth\cite{hyndman2009}, and
+bivariate kernel density estimation\cite{scott1992} are some examples. This
 ordering then yields functional analogs to median and other percentile
 metrics. For small values, the ordered curves can then be colored based on the
 ordering metric \cite{hyndman2009}, but this method is unweildy for larger
@@ -135,16 +134,32 @@ method better highlights the outliers outside the envelopes of functions.
 
 
 
-The functional boxplot was developed to describe the distributional nature of functional data\cite{sun2011}. 
+The functional boxplot was developed to describe the distributional nature of
+functional data\cite{sun2011}. \textbf{expand this section with discusson of Sun's paper}
 
 
 \begin{figure}
-\includegraphics{contour_weather}
+  \includegraphics[width=.75\linewidth]{contour_weather}
+  \caption{}
 \label{fig:countour}
 \end{figure}
 While functional bag, box, and HDR plots all show outliers, each method is most
 successful visualizing a specific type of outlier. Countour
-boxplots\cite{whitaker2013} aim instead to capture the variablity of the uncertainity via a band depth ordering metric. Each ensemble members band depth is computed as sum of the probabilities that the observations in any given ensemble fall within the max-min envelope defined by any two other ensembles. The bands are then sorted by band depth such that the median is the ensemble with about 50\% of its members withen all envelopes formed by other bands (so most centered). Outer bands are chosen according to the task at hand. In \cite{whitaker2013}, they apply the countour boxplots to temperature visualizations. %
-The authors argue that countour boxplots are an improved visual idiom over the traditional spagehttie plots seen in \ref{fig:countour} because as seen in (fig), the spagehetti plots get nosy as the number of plots increase and so it's hard to tease out specific patterns. Instead in (fig3), the authors remove most of the bands and instead visualize an outliser envelope(light gray) and a more central envelope(dark gray). It retains much of the information of the spagethhit, but removes the visual noise of the lines.  
+boxplots\cite{whitaker2013} aim instead to capture the variablity of the
+uncertainity via a band depth ordering metric. Each ensemble members band depth
+is computed as sum of the probabilities that the observations in any given
+ensemble fall within the max\-min envelope defined by any two other
+ensembles. The bands are then sorted by band depth such that the median is the
+ensemble with about 50\% of its members withen all envelopes formed by other
+bands (so most centered). Outer bands are chosen according to the task at
+hand. In \cite{whitaker2013}, they apply the countour boxplots to temperature
+visualizations. The authors argue that countour boxplots are an improved visual
+idiom over the traditional plots seen in Figure~\ref{fig:spag} because
+as seen in , the spagehetti plots get nosy as the number of plots increase
+and so it's hard to tease out specific patterns. Instead in Figure~\ref{fig:countour}, the authors
+remove most of the bands and instead visualize an outlier envelope(light gray)
+and a more central envelope(dark gray). It retains much of the information of
+the spagethhit, but removes the visual noise of the lines.
+
 \end{document}
 
