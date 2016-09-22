@@ -12,7 +12,7 @@
 
 
 
-\title{Visualizing Multivariate PDFs}
+\title{Visualizing Functional Data}
 \author{Hannah Aizenman}
 \committee{ Dr. Michael Grossberg(Advisor), Robert Haralick, Huy Vo}
 \submitted{}
@@ -22,40 +22,41 @@
 \makefrontmatter
 
 \section{Introduction}
-Tukey lays out the case for exploratory data analysis when
-he says ``The picturing of data must be sensitive, not only to the multiple
-hypotheses we hold, but to the many more we have not yet thought of, regard as unlikely or
-think impossible'' \cite{tukey1975}. He advocates breaking from a deterministic $$y=mx+b$$
-best fit line approach where the b is treated as an afterthough to a more
-nuanced
-\begin{align*}
-  \text{given = fit PLUS residual}
-\end{align*}
-explicitly to bring attention to the residuals. Tukey is arguing that it's not
-good enough to just look at the path of the data but also at the variation in
-the path. In some sense this is the fundemental disctinction between
-confirmatory data analysis and exploratary data analysis; whereas the former
-intends to display a picture that supports a hypothesis (such as that best fit
-line that shows the direction of the data), the latter's purpose is to
-facilitate investigation of the data (and the hypothesis). To explore data, it
-is crucial to understand the shape of the data, which can be done using a
-number of exploratory visualzation techniques. Because these techniques are
-highly dependent on the structure of the data, this paper explores techniques suitable to different classes of data-seperable, non-seperable, and
-possibly seperable but interdependent-and then uses this framework to evaluate
-distrubitional visualziation in recent climate visualization toolkits. 
 
-\subfile{sections/seperable.tex}
-%%history of the boxplot and the like
-\section{Non-Seperable Dimensions}
-%%using machine learning to find seperable distributions in data/
-%%PCA, Clustering,ICA, Linear Manifold, etc...
-\section{Interdependent but Important Dimensions}
-%% Spatio Temporal Probabilitues - hurrican tracks yield curves 
-\section{Climate Visualization Toolkits}
+High dimensional data is catch-all term, typically used to describe data that's highly
+multivariate or data that's structurally complex, or even data that simply has
+a large number of observations. The lack of specificity of the phrase
+`high-demensional` can make it difficult to parse out which high-dimensional
+analysis and visaualization technique is suited to the research question at
+hand. To answer that question, it's crucial to first have a set of working
+definitions for discussing the data:
+
+\begin{definition}
+\item[measurements] criteria based assignment of numbers to objects or events \cite{grimm1993}
+\item[variables] ``any characteristics, number, or quantity that can be measured
+  or counted''\cite{ABS}
+
+\item[field] dataset type where each cell has associated information \cite{munzner14ii}    
+\end{defintion}
+
+
+
+
+\subfile{sections/independent.tex}
 
 \section{Conclusion}
 \label{sec:conclusion}
 
+\begin{tabular}{|r|r|r|r|}
+  \hline
+              & univariate & bivariate & multivariate\\
+  \hline
+   0D         &            &           &             \\
+  \hline
+   1D         &            &           &             \\
+   \hline
+   ND         &            &           &             \\
+\end{tabular}
 
 \pagebreak
 \printbibliography
