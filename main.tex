@@ -16,8 +16,14 @@
 \author{Hannah Aizenman}
 \committee{ Dr. Michael Grossberg(Advisor), Robert Haralick, Huy Vo}
 \submitted{}
-\abstract{}
-
+\abstract{There are an almost overwhelming number of machine learning and
+  visualization techniques, but each technique makes some underlying
+  assumptions about how the data is structured. While sometimes the
+  observations are completely independent from each other, in many instances
+  the observations are sampled from 1D continuum like time or 2d surface such
+  as space.This survey uses functional data analysis to classify visualizations based on
+  the number of variables, whether the variables are independent, and how the
+  observations are related to each other}
 \begin{document}
 \makefrontmatter
 
@@ -28,18 +34,23 @@ multivariate or data that's structurally complex, or even data that simply has
 a large number of observations. The lack of specificity of the phrase
 `high-demensional` can make it difficult to parse out which high-dimensional
 analysis and visaualization technique is suited to the research question at
-hand. To answer that question, it's crucial to first have a set of working
-definitions for discussing the data:
+hand. Datasets inherently have two components, the variables and the
+observations of those variables. Functional data analysis provides a language
+for formalizing the structure of the data in such a way that it clarifies the
+possible interactions in the data.
 
-\begin{definition}
-\item[measurements] criteria based assignment of numbers to objects or events \cite{grimm1993}
-\item[variables] ``any characteristics, number, or quantity that can be measured
-  or counted''\cite{ABS}
+%%paragraph on functional data analysis
 
-\item[field] dataset type where each cell has associated information \cite{munzner14ii}    
-\end{defintion}
+Observations can often be reduced to one of the following forms:
 
+\begin{tabular}
+   & univarate   & bivariate                & multivariate \\
+0D & v_i         & v0_i, v1_i               & v0_i, \dots, vn_i \\
+1D & v_i(x_i)     & v0_i(x_i), v1_i(x_i)    & v0_i(x_i), \dots, vn_i(x_i)\\
+ND & v_i(x0_i,\dots,xn_i)     & v0_i(x0_i,\dots,xn_i), v1_i(x0_i,\dots,xn_i)    & v0_i(x0_i,\dots,xn_i), \dots, vn_i(x0_i,\dots,xn_i)\\
+\end{tabular}
 
+The variables $v0,\dots, vn$ can also potentially be dependent on each other, adding in a third level of interactions that a visualization may want to caputure. 
 
 
 \subfile{sections/independent.tex}
