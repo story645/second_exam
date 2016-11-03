@@ -35,22 +35,39 @@ a large number of observations. The lack of specificity of the phrase
 `high-demensional` can make it difficult to parse out which high-dimensional
 analysis and visaualization technique is suited to the research question at
 hand. Datasets inherently have two components, the variables and the
-observations of those variables. Functional data analysis provides a language
-for formalizing the structure of the data in such a way that it clarifies the
+observations of those variables. These oberservations are sometimes dependent
+on information rich parameters such as time and space, and often it is as
+important to visualize these underlying parametric dependencys as the
+relationships between the variables in given observations. Functional data
+analysis provides a language for formalizing the structure of the data in such a way that it clarifies the
 possible interactions in the data.
 
 %%paragraph on functional data analysis
+The underlying assumption of functional data analysis is that while sometimes
+samples are discrete, often they are drawn from a continuos sample of
+obersvations \cite{ramsey, hook, meuller}. Independent observations
+by definition rely on zero paramters, whereas dependent observations can be
+paramterized on one dimension (such as as time), or multiple (such as time,
+latitude, longitude, altitude). %%throw some math here to transition to my table
 
-Observations can often be reduced to one of the following forms:
 
+\begin{table}
 \begin{tabular}
    & univarate   & bivariate                & multivariate \\
-0D & v_i         & v0_i, v1_i               & v0_i, \dots, vn_i \\
-1D & v_i(x_i)     & v0_i(x_i), v1_i(x_i)    & v0_i(x_i), \dots, vn_i(x_i)\\
-ND & v_i(x0_i,\dots,xn_i)     & v0_i(x0_i,\dots,xn_i), v1_i(x0_i,\dots,xn_i)    & v0_i(x0_i,\dots,xn_i), \dots, vn_i(x0_i,\dots,xn_i)\\
+0 parameter & RV_i         & v0_i, v1_i               & RV0_i, \dots, RVn_i \\
+1 paramter & RV_i(x_i)     & RV0_i(x_i), RV1_i(x_i)    & RV0_i(x_i), \dots, RVn_i(x_i)\\
+N parameters & RV_i(x0_i,\dots,xn_i)     & RV0_i(x0_i,\dots,xn_i), RV1_i(x0_i,\dots,xn_i)    & RV0_i(x0_i,\dots,xn_i), \dots, RVn_i(x0_i,\dots,xn_i)\\
 \end{tabular}
+\caption{Each $vi$ is a distinct variable such as precipitation or temperature,
+  each $xi$ is a distinct parameter such as time or space, and i is the
+  observation identifier.}
+\end{table}
 
-The variables $v0,\dots, vn$ can also potentially be dependent on each other, adding in a third level of interactions that a visualization may want to caputure. 
+The variables $v0,\dots, vn$ can also potentially be dependent on each other,
+adding in a third level of interactions that a visualization may want to
+caputure. While this survey focuses on data structured in a linear, tabular, or
+data cube way, it could potentially be expanded to network data where the xi
+parameters represent edges in the graph. 
 
 
 \subfile{sections/independent.tex}
