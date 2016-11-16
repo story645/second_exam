@@ -14,23 +14,21 @@
 
 \title{Visualizing Functional Data}
 \author{Hannah Aizenman}
-\committee{ Dr. Michael Grossberg(Advisor), Robert Haralick, Huy Vo}
+\committee{Dr. Michael Grossberg(Advisor), Dr. Robert Haralick, Dr. Huy Vo}
 \submitted{}
 \abstract{There are an almost overwhelming number of machine learning and
   visualization techniques, but each technique makes some underlying
   assumptions about how the data is structured. While sometimes the
   observations are completely independent from each other, in many instances
   the observations are sampled from 1D continuum like time or 2d surface such
-  as space.This survey uses functional data analysis to classify visualizations based on
-  the number of variables, whether the variables are independent, and how the
-  observations are related to each other}
+  as space.This survey uses functional data analysis to classify visualizations
+  based on the number of variables in and level of paramterization of the data.}
 \begin{document}
 \makefrontmatter
 
 \section{Introduction}
-
-High dimensional data is catch-all term, typically used to describe data that's highly
-multivariate or data that's structurally complex, or even data that simply has
+High dimensional data is catch-all term, typically used to describe data that
+highly multivariate or data that's structurally complex, or even data that simply has
 a large number of observations. The lack of specificity of the phrase
 `high-demensional` can make it difficult to parse out which high-dimensional
 analysis and visaualization technique is suited to the research question at
@@ -39,28 +37,26 @@ observations of those variables. These oberservations are sometimes dependent
 on information rich parameters such as time and space, and often it is as
 important to visualize these underlying parametric dependencys as the
 relationships between the variables in given observations. Functional data
-analysis provides a language for formalizing the structure of the data in such a way that it clarifies the
-possible interactions in the data.
+analysis provides a language for formalizing the structure of the data in such
+a way that it clarifies the possible interactions in the data.
 
 %%paragraph on functional data analysis
 The underlying assumption of functional data analysis is that while sometimes
 samples are discrete, often they are drawn from a continuos sample of
-obersvations \cite{ramsey, hook, meuller}. Independent observations
-by definition rely on zero paramters, whereas dependent observations can be
-paramterized on one dimension (such as as time), or multiple (such as time,
-latitude, longitude, altitude). %%throw some math here to transition to my table
+obersvations \cite{ramsey, hook, meuller}. That continuous sample is often over
+space or time or another attribute on which the observation is conditional.
 
 
-\begin{table}
+\begin{table}%%use conditional notation since it's the same
 \begin{tabular}
    & univarate   & bivariate                & multivariate \\
-0 parameter & RV_i         & v0_i, v1_i               & RV0_i, \dots, RVn_i \\
-1 paramter & RV_i(x_i)     & RV0_i(x_i), RV1_i(x_i)    & RV0_i(x_i), \dots, RVn_i(x_i)\\
-N parameters & RV_i(x0_i,\dots,xn_i)     & RV0_i(x0_i,\dots,xn_i), RV1_i(x0_i,\dots,xn_i)    & RV0_i(x0_i,\dots,xn_i), \dots, RVn_i(x0_i,\dots,xn_i)\\
+0 & RV         & RV_0, RV_1               & RV_0, \dots, RV_n \\
+1 & RV(x)     & RV_0(x), RV_1(x)    & RV_0(x), \dots, RV_n(x)\\
+N & RV(x_0,\dots,x_n)     & RV_0(x_0,\dots,x_n), RV_1(x_0,\dots,x_n)    & RV_0(x_0,\dots,xn_i), \dots, RV_n(x_0,\dots,x_n)\\
 \end{tabular}
-\caption{Each $vi$ is a distinct variable such as precipitation or temperature,
-  each $xi$ is a distinct parameter such as time or space, and i is the
-  observation identifier.}
+\caption{Each RV is a distinct variable such as precipitation or temperature,
+  each x is a parameter, such as time or space, on which RV is conditionally
+  dependent. Each cell in the table is distinct observation in the dataset}
 \end{table}
 
 The variables $v0,\dots, vn$ can also potentially be dependent on each other,
