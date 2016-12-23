@@ -5,14 +5,22 @@
 
 
 \subsection{Univariate Observations}
-Playfair bar graph, line graph, etc \cite{TufteVisualDisplay}
-%%histogram and pdfs/distribution fitting
 
-The specific shape is
-dependent on what sort of density estimation method is used, such as kernal
-estimation or nearest neighbor estimation \cite{chambers1983}. 
-width using the density-trace method-which is a probability density estimation
-via moving windowed average) proposed by Chambers et. al \cite{chambers1983},.
+The bar graph is arguable the simplest way to visualize data that is all of the
+same type drawn from a sample at random. In this visualization technique, the
+heights of the bar are representative of the values, the x valuesare each
+invidual observation and the positioning of the x values is somewhat
+arbitrary. \cite{TufteVisualDIsplay, Friendly, Playfair}. Since bar
+graphs become somewhat useless as the number of samples increase, it is common
+to group (bin) the data and then count the number of elements in each
+been. Both this binning and counting and the subsequent bar chart of the
+frequency are referred to as histograms \cite{ioannidis2003}. While histograms
+give an approximation of the distribution of the data, sometimes the bin widths
+can be too wide and thereby fail to catch naunces in the data such as
+bimodality. A way to counteract this is to build histograms with very thin
+buckets, which is one of the less sophisticated methods of doing kernal density
+estimation. Other methods of approximating the distribution include nearest
+neighbor estimation or the  moving windowed average density trace method \cite{chambers1983}.
 
 
 \subsection{Bivariate Observations}
