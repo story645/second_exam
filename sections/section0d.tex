@@ -6,7 +6,7 @@
 
 \subsection{Univariate Observations}
 
-The bar graph is arguable the simplest way to visualize data that is all of the
+The bar graph is arguably the simplest way to visualize data that is all of the
 same type drawn from a sample at random. In this visualization technique, the
 heights of the bar are representative of the values, the x values are each
 invidual observation and the positioning of the x values is somewhat
@@ -91,7 +91,13 @@ kurtosis, and other descriptive distributional statistics \cite{kim2004,
 Arguably the simplest and most well known method of visualizing two
 variables against each other is the scatterplot\cite{friendly2005}. In
 a scatter plot, one variable is mapped to the x coordinate and a
-second variable is mapped to the y coordinate,  
+second variable is mapped to the y coordinate, and the distribution of the
+points in the x/y plane indicates whether the x and y variables are related to
+each other. While this plot gives a sense of direction, it can fail for larger
+datesets (% insert citations for scatter for larger datasets) and doesn't
+capture the uncertainity of the relationship between the x and y variables. To
+display the distributional variance, the bagplot and bivariate HDR plot were
+created. These plots work in X/Y/Z - bag/box papers tomorrow morning
 
 \begin{figure}
   %%\includegraphics{bagplot}
@@ -106,11 +112,16 @@ second variable is mapped to the y coordinate,
 
 
 \subsection{Multivariate Observations}
+If the variables are independent, then small multiples (insert citation) or
+visualizations for a smaller number of variables can be used to visualize
+them. But this technique is limited to a somewhat small number of variables
+(maybe 20 (find paper)) before the number of multiples is overwhelming and
+impedes decision making. Instead, there are some techniques to look at a large
+set of independent variables at once, such as ....
 
-%%bubble plot? 
 %% large scale box: letter, spark
 
-
+%%bubble plot
 %% radial, parallel coordinates, factor plotl
 %%high d-PCA, ICA, markov
 
