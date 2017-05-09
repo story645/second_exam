@@ -1,4 +1,4 @@
-\documentclass[letterpaper,onecolumn,titlepage]{Ythesis}
+==\documentclass[letterpaper,onecolumn,titlepage]{Ythesis}
 
 \usepackage{graphicx}
 \graphicspath{{sections/figs/}{.figs/}}
@@ -26,47 +26,8 @@
 \begin{document}
 \makefrontmatter
 
-\section{Introduction}
-
-High dimensional data is catch-all term, typically used to describe data that
-highly multivariate or data that's structurally complex, or even data that simply has
-a large number of observations. The lack of specificity of the phrase
-`high-demensional` can make it difficult to parse out which high-dimensional
-analysis and visaualization technique is suited to the research question at
-hand. Datasets inherently have two components, the variables and the
-observations of those variables. These oberservations are sometimes dependent
-on information rich parameters such as time and space, and often it is as
-important to visualize these underlying parametric dependencys as the
-relationships between the variables in given observations. Functional data
-analysis provides a language for formalizing the structure of the data in such
-a way that it clarifies the possible interactions in the data.
-
-%%paragraph on functional data analysis
-The underlying assumption of functional data analysis is that while sometimes
-samples are discrete, often they are drawn from a continuos sample of
-obersvations \cite{ramsey, hook, meuller}. That continuous sample is often over
-space or time or another attribute on which the observation is conditional.
-
-
-\begin{table}%%use conditional notation since it's the same
-\begin{tabular}
-   & univarate   & bivariate                & multivariate \\
-0 & RV         & RV_0, RV_1               & RV_0, \dots, RV_n \\
-1 & RV(x)     & RV_0(x), RV_1(x)    & RV_0(x), \dots, RV_n(x)\\
-N & RV(x_0,\dots,x_n)     & RV_0(x_0,\dots,x_n), RV_1(x_0,\dots,x_n)    & RV_0(x_0,\dots,xn_i), \dots, RV_n(x_0,\dots,x_n)\\
-\end{tabular}
-\caption{Each RV is a distinct variable such as precipitation or temperature,
-  each x is a parameter, such as time or space, on which RV is conditionally
-  dependent. Each cell in the table is distinct observation in the dataset}
-\end{table}
-
-The variables $v0,\dots, vn$ can also potentially be dependent on each other,
-adding in a third level of interactions that a visualization may want to
-caputure. While this survey focuses on data structured in a linear, tabular, or
-data cube way, it could potentially be expanded to network data where the xi
-parameters represent edges in the graph. 
-
-
+\subfile{sections/intro.tex}
+\subfilt{sections/problem.tex}
 \subfile{sections/independent.tex}
 
 \section{Conclusion}
