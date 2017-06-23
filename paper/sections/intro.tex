@@ -1,29 +1,41 @@
 \documentclass[../main.text]{subfiles}
 \begin{document}
 
-A high resolution spatio-temporal temperature model and the academic
-transcripts of all students at The Graduate Center are both high dimensional
-data sets, but they pose intrinsically different data visualization
-challenges. The former necessitates visualization techniques that preserve the
-spatio-temporal structure, whereas the latter requires a technique for
-highlighting the important information in a sea of variables. 
 
 
 
-%% include retinal variables figure
-Bertin's retinal variables codified the language of visualizaton. As
-figure~\ref{fig:bertin} describes, qualitiave aspects of a visual symbol -
-it's shape, hue, intensity, texture-are varied to display qualitative
-differences in the data, and the quantatitive attributes - size, color value -
-are manipulated to show quantatiative differences in the data
-\cite{bertin1983, krygier2016}. Figure~\ref{fig:bertin} illustrates the
-underlying implict distinction between variables and the components of the data
-that inform the structure of the data (the geographic plane or the time series
-line). In this system, the data's internal structure informs whether it will be
-represented as a point, a line, or a plane. While more structural components
-can be visualized using shape, size, hue, etc. there's no assumed
-representation outside what can be easily drawn on paper.  
+p(X|Y) is normalized so that holding Y fixed and summing over X it sums to 1 oh
+actually they write it P(X|Y)
+
+P is discrete and p is density continuous
+
+P is a probability distribution function p is a propability density function
+
+Sheldon M. Ross .... intro to prob models
+Discrete Random Variable Continuous Random Variables
+Categorical Parameters
+Continuous Parameters
+
+Continuous: time, space, time+space
 
 
 
-\cite{wilkinson2006}
+\begin{table}%%use conditional notation since it's the same
+\begin{tabular}
+   & univarate   & bivariate                & multivariate \\
+0 & RV         & RV_0, RV_1               & RV_0, \dots, RV_n \\
+1 & RV(x)     & RV_0(x), RV_1(x)    & RV_0(x), \dots, RV_n(x)\\
+N & RV(x_0,\dots,x_n)     & RV_0(x_0,\dots,x_n), RV_1(x_0,\dots,x_n)    & RV_0(x_0,\dots,xn_i), \dots, RV_n(x_0,\dots,x_n)\\
+\end{tabular}
+\caption{Each RV is a distinct variable such as precipitation or temperature,
+  each x is a parameter, such as time or space, on which RV is conditionally
+  dependent. Each cell in the table is distinct observation in the dataset}
+\end{table}
+
+The variables $v0,\dots, vn$ can also potentially be dependent on each other,
+adding in a third level of interactions that a visualization may want to
+caputure. While this survey focuses on data structured in a linear, tabular, or
+data cube way\cite{munzner data structure}, it could potentially be expanded to network data where the xi
+parameters represent edges in the graph. 
+
+\end{document}
