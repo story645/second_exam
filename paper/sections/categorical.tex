@@ -10,26 +10,28 @@ conditional probability, the question of the likelihood of membership in one
 set given membership in another. And sometimes there is also a quantative
 component involved too. For example, in a study of how NEH funding has changed
 over time, there are questions of the likelihoods of different disciplines
-being funded (\{d_0,\dots,\d_i}\in \D), and if that is conditioned on
-  institutione
-  type \{i_0, \dots,\i_n}\in I}, and if either of
-those are then conditional on time \{t_0, \dots,t_n} \cite{wired} 
+being funded (\{d_0,\dots,\d_i}\in \D), and if that is conditioned on institutione
+  type \{i_0, \dots,\i_n}\in I}, and if either of those are then conditional on time \{t_0, \dots,t_n} \cite{wired} 
 %% this can as easily be 311 data, but I don't have a citation for that
  The most common approach is usually to create a list of frequncies, sometimes of
- sets of one category, such as \D, or a table wherein each cell is a an element
+ sets of one category, such as \D, or a crosstable wherein each cell is a an element
  in the product of two (or more sets), such as \D\cross \I creates a table
  wherein cell one is the frequency of elements that are in both $\d_0$ and
- $\i_0$ \cite{find_pivot_table_citation, set theoreitoc categorical data citation}.
+ $\i_0$ \cite{what is cross tabulation?}
 
  While a table is encouraged for a small number of variables
- \cite{munznertablesgood}), bar graphs are typically used to display
- differences between subsets such as \d_0,\dots, \d_n \cite{riendly_visualizing_2000,,
-   ioannidis_history_2003-1, friendly_brief_2006}. They are somewhat limited to
- showing singular frequencies, in that multiple sets can be shown using
- different colors \cite{semiology} but the bars can not really be used to show
- joint set membership.
- 
+ \cite{munznertablesgood}), bar graphs and histograms are typically used to display
+ differences between subsets such as \d_0,\dots, \d_n
+ \cite{ioannidis_history_2003-1, friendly_brief_2006}. Variations on histograms
+ include the hanging rootgram, ord plot, and other distribution oriented
+ plots \cite{tukey_exploratory_1977, friendly_visualizing_2000}.
 
+ While conditional  distributions can somewhat be visualized using Fourfold displays,
+ Mosiac displays, and using logit models, these plots have somewhat limited
+ dimensionality and are somewhat limited to 3 sets of categories
+ \cite{friendly_visualizing_2000}. Another approach is to [insert correlation
+   paper here...]
+ 
  \begin{figure}
    \includegraphics{upsetfig1}
    \caption{UpSet dashboard displaying the relationships amongst movie
@@ -40,18 +42,38 @@ those are then conditional on time \{t_0, \dots,t_n} \cite{wired}
    \label{fig:upsetfig1}
  \end{figure}
 
- 
-The UpSet tool is designed to display set intersections and the aggregate
-information of quantative attributes and set membership.
-As shown in \ref{fig:upsetfig4}, the Upset tool provides linked set and element views. The set view provides the intersections and their
+The UpSet tool is designed to
+display a much larger number of set intersections and the aggregate
+information of quantative attributes and set membership. \cite{lex_upset:_2014}
+As shown in figure~\ref{fig:upsetfig4}, the Upset tool provides linked set and element views. The set view provides the intersections and their
 aggregates, the frequencies of each set and intersection, and the aggregate
 statistics of the associated quantative variables, while the element view shows
 selected elements and information about their set membership. The Upset tool
 also faciliatates comparison of filtered sets via scatterplot, which acts as a
 visualization of the attributes of the data conditioned on membership in the
 filtered set.  
- 
 
-
+\begin{figure}
+  \includegraphics{parallelsets.png}
+  \caption{On the left is the categorical view, where users can define
+    categories based on other categorical information. For example, in this
+    veiw working family with children is defined as a household with one or
+    more children. On the right is a parallel coordinate graph wherin the
+    dominiant category informs the colors, the size of the box is relative to
+    ghe category size, and the historgrams show the freqiencies of those
+    categories relative to the connecting catgories (market type and income
+    respectively). }
+  \label{fig:upsetfig1}
+\end{figure}
+While UpSet is designed with all sorts of sets in mind, the Parallel Sets tool
+showin in figure~\ref{fig:upsetfig} is expicilitly designed to show frequencies of set membership in heirarichal
+ordered categorical sets, so the \{d_0, \dots, d_n} \in D
+  \cite{kosara_parallel_2006}. Building on the fexible linked axis version of
+  the parallel cooridnates plot \cite{flexible linked axis}, Parallel Sets
+  treats each categorical set independantly but indicates conditional
+  dependency through cross tabulations and by grouping the data, indicated via
+  color, based on an active dimension that then becomes the pivot point for the
+  cross tabulations. In Parallel Sets, quantative data is converted to
+  categorical via binning. 
 
 \end{document}
