@@ -24,13 +24,9 @@ being funded (\{d_0,\dots,\d_i}\in \D), and if that is conditioned on institutio
  differences between subsets such as \d_0,\dots, \d_n
  \cite{ioannidis_history_2003-1, friendly_brief_2006}. Variations on histograms
  include the hanging rootgram, ord plot, and other distribution oriented
- plots \cite{tukey_exploratory_1977, friendly_visualizing_2000}.
-
- While conditional  distributions can somewhat be visualized using Fourfold displays,
- Mosiac displays, and using logit models, these plots have somewhat limited
- dimensionality and are somewhat limited to 3 sets of categories
- \cite{friendly_visualizing_2000}. Another approach is to [insert correlation
-   paper here...]
+ plots \cite{tukey_exploratory_1977, friendly_visualizing_2000}. While conditional  distributions can somewhat be visualized using Fourfold displays, Mosiac displays, and using logit models, these plots have somewhat limited dimensionality and are somewhat limited to 3 sets of categories
+ \cite{friendly_visualizing_2000}. 
+   
  
  \begin{figure}
    \includegraphics{upsetfig1}
@@ -65,15 +61,26 @@ filtered set.
     respectively). }
   \label{fig:upsetfig1}
 \end{figure}
-While UpSet is designed with all sorts of sets in mind, the Parallel Sets tool
-showin in figure~\ref{fig:upsetfig} is expicilitly designed to show frequencies of set membership in heirarichal
-ordered categorical sets, so the \{d_0, \dots, d_n} \in D
+
+Another important factor in visualizing categorical data is retaining the
+inherent heirachy in many datasets with categorical measurements
+\cite{shneiderman_visualizing_2000}. The Parallel Sets tool
+showin in figure~\ref{fig:upsetfig} is expicilitly designed to show frequencies
+of set membership in heirarichal ordered categorical sets, so the \{d_0, \dots, d_n} \in D
   \cite{kosara_parallel_2006}. Building on the fexible linked axis version of
   the parallel cooridnates plot \cite{flexible linked axis}, Parallel Sets
   treats each categorical set independantly but indicates conditional
   dependency through cross tabulations and by grouping the data, indicated via
   color, based on an active dimension that then becomes the pivot point for the
   cross tabulations. In Parallel Sets, quantative data is converted to
-  categorical via binning. 
+  categorical via binning.
+
+\begin{figure}
+    
+\end{figure}
+Often though it's important to retain the internel structure of the
+quantative data, such as when it has internal structucture such as time and
+space. Zhang et al propose a method that retains data and allows for
+visualizing more than just pairwise relationships\cite{zhang_visual_2015}. Thei
 
 \end{document}
