@@ -1,23 +1,17 @@
 \documentclass[../main.text]{subfiles}
 \begin{document}
 
-%%find a citation that talks about categorical data in set theoretic terms
 
 Categorical data can be likened to set measurment, where each category is a set
 and researchers often want to know how many members each set has and what
-intersections are common between sets. It is the latter that is analogous to a
+intersections are common between sets \cite{agresti_categorical_2011,schneider_set-theoretic_2012}
+  It is the latter that is analogous to a
 conditional probability, the question of the likelihood of membership in one
 set given membership in another. And sometimes there is also a quantative
-component involved too. For example, in a study of how NEH funding has changed
-over time, there are questions of the likelihoods of different disciplines
-being funded (\{d_0,\dots,\d_i}\in \D), and if that is conditioned on institutione
-  type \{i_0, \dots,\i_n}\in I}, and if either of those are then conditional on time \{t_0, \dots,t_n} \cite{wired} 
-%% this can as easily be 311 data, but I don't have a citation for that
- The most common approach is usually to create a list of frequncies, sometimes of
- sets of one category, such as \D, or a crosstable wherein each cell is a an element
+component involved too. The most common approach is usually to create a list of frequncies, sometimes of sets of one category, such as \D, or a crosstable wherein each cell is a an element
  in the product of two (or more sets), such as \D\cross \I creates a table
  wherein cell one is the frequency of elements that are in both $\d_0$ and
- $\i_0$ \cite{what is cross tabulation?}
+ $\i_0$.
 
  While a table is encouraged for a small number of variables
  \cite{munznertablesgood}), bar graphs and histograms are typically used to display
@@ -68,7 +62,7 @@ inherent heirachy in many datasets with categorical measurements
 showin in figure~\ref{fig:upsetfig} is expicilitly designed to show frequencies
 of set membership in heirarichal ordered categorical sets, so the \{d_0, \dots, d_n} \in D
   \cite{kosara_parallel_2006}. Building on the fexible linked axis version of
-  the parallel cooridnates plot \cite{flexible linked axis}, Parallel Sets
+  the parallel cooridnates plot \cite{claessen_flexible_2011}, Parallel Sets
   treats each categorical set independantly but indicates conditional
   dependency through cross tabulations and by grouping the data, indicated via
   color, based on an active dimension that then becomes the pivot point for the
@@ -76,11 +70,27 @@ of set membership in heirarichal ordered categorical sets, so the \{d_0, \dots, 
   categorical via binning.
 
 \begin{figure}
-    
+  \includegraphics{corr.png}
+  \label{caption} Zhang et al create an initial map (a) that they then apply an
+  edge filter to (b). They then allow the user to filter out a variable and
+  either highlight only the vertices of that variable (c) or the edges incident
+  on that variable(d).
+  \label{fig:corr}
 \end{figure}
+
 Often though it's important to retain the internel structure of the
 quantative data, such as when it has internal structucture such as time and
 space. Zhang et al propose a method that retains data and allows for
-visualizing more than just pairwise relationships\cite{zhang_visual_2015}. Thei
+visualizing more than just pairwise relationships\cite{zhang_visual_2015}. They
+introduce a concept of a correlation map, as shown in
+figure~\ref{fig:corr}. The authors build out a graph where every variable is a
+vertex and the edges are correlations between the connecting vertices. The
+vertices are sized relative to the variance in the data. The edges are colored
+red for negative correlations and green for positive correlations. To convert
+the categorical data to numerical space, they developed an algorithm where when
+mapped to numbers, the residual sum of squares of a logostic regression of the
+categorical variables  would be minimized. They then filter edges with low
+correlations and on variables of interest.
+
 
 \end{document}
