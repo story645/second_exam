@@ -30,7 +30,7 @@
 *.thm
 *.nav
 *.snm
-
+*.pdf
 # python
 
 .DS_Store

@@ -12,37 +12,76 @@
 
 
 
-\title{Visualizing Functional Data}
+\title{Visualizing Conditional Relationshops}
 \author{Hannah Aizenman}
 \committee{Dr. Michael Grossberg(Advisor), Dr. Robert Haralick, Dr. Huy Vo}
 \submitted{}
-\abstract{There are an almost overwhelming number of machine learning and
-  visualization techniques, but each technique makes some underlying
-  assumptions about how the data is structured. While sometimes the
-  observations are completely independent from each other, in many instances
-  the observations are sampled from 1D continuum like time or 2d surface such
-  as space.This survey uses functional data analysis to classify visualizations
-  based on the number of variables in and level of paramterization of the data.}
+\abstract{The context surrounding data is often as important as the
+  measurements themselves. Income data provides a lens into demographic
+  inequalities when seperated by race and gender; temperature data indicates
+  seasons when plotted by time. These are relatively simple relationships, but
+ many datasets are embedded with rather complex conditional relationships. This
+ survey gives an overview of techniques showing conditional dependencies
+ amongst distributions and densities. 
+}
 \begin{document}
 \makefrontmatter
 
-\subfile{sections/intro.tex}
+\section{Introduction}
+\label{sec:introduction}
+p(X|Y) is normalized so that holding Y fixed and summing over X it sums to 1 oh
+actually they write it P(X|Y)
+
+P is discrete and p is density continuous
+
+P is a probability distribution function p is a propability density function
+
+Sheldon M. Ross .... intro to prob models
+Discrete Random Variable Continuous Random Variables
+Categorical Parameters
+Continuous Parameters
+
+Continuous: time, space, time+space
+
+
+The underlying assumption of functional data analysis is that while sometimes
+samples are discrete, often they are drawn from a continuos sample of
+obersvations \cite{ramsey2006, ramsey2002, muller2006}. That continuous sample is often over
+space or time or another attribute on which the observation is conditional. In
+functional data analysis,
+
+\begin{table}%%use conditional notation since it's the same
+\begin{tabular}
+                & Distribution & Density 
+   Distribution &
+   Density      & 
+\end{tabular}
+
+\begin{table}%%use conditional notation since it's the same
+\begin{tabular}
+   & univarate   & bivariate                & multivariate \\
+0 & RV         & RV_0, RV_1               & RV_0, \dots, RV_n \\
+1 & RV(x)     & RV_0(x), RV_1(x)    & RV_0(x), \dots, RV_n(x)\\
+N & RV(x_0,\dots,x_n)     & RV_0(x_0,\dots,x_n), RV_1(x_0,\dots,x_n)    & RV_0(x_0,\dots,xn_i), \dots, RV_n(x_0,\dots,x_n)\\
+\end{tabular}
+
+\caption{Each RV is a distinct variable such as precipitation or temperature,
+  each x is a parameter, such as time or space, on which RV is conditionally
+  dependent. Each cell in the table is distinct observation in the dataset}
+\end{table}
+
+The variables $v0,\dots, vn$ can also potentially be dependent on each other,
+adding in a third level of interactions that a visualization may want to
+caputure. While this survey focuses on data structured in a linear, tabular, or
+data cube way\cite{munzner data structure}, it could potentially be expanded to network data where the xi
+parameters represent edges in the graph. 
+
+
 \subfilt{sections/problem.tex}
 \subfile{sections/independent.tex}
 
 \section{Conclusion}
 \label{sec:conclusion}
-
-\begin{tabular}{|r|r|r|r|}
-  \hline
-              & univariate & bivariate & multivariate\\
-  \hline
-   0D         &            &           &             \\
-  \hline
-   1D         &            &           &             \\
-   \hline
-   ND         &            &           &             \\
-\end{tabular}
 
 \pagebreak
 \printbibliography
