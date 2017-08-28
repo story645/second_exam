@@ -1,3 +1,11 @@
+To Do:
+=====
+1d: Scatter,
+
+2D: Chlorpleths, bivariate chlorpleths, etc
+
+
+3D: http://scikit-learn.org/stable/auto_examples/ensemble/plot_partial_dependence.html#id3
 
 My Working Defitiontions:
 =========================
