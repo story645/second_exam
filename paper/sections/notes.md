@@ -7,6 +7,12 @@ To Do:
 
 3D: http://scikit-learn.org/stable/auto_examples/ensemble/plot_partial_dependence.html#id3
 
+
+QCA for cat/cat,
+graphic models for hybrid  
+fda for quantative + quantative
+
+
 My Working Defitiontions:
 =========================
 Dataset: collection of related information 
