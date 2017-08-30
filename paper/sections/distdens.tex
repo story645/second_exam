@@ -4,7 +4,7 @@ Often it is useful to find representative patterns (clusters) from sets of data.
 
 \begin{figure}
 \includegraphics{radial}
-\caption{Figure from \cite{Albo_Bak_}. Radar chart, flower chart, and circle
+\caption{Figure from \cite{albo_off_2016}. Radar chart, flower chart, and circle
   charts}
 \label{fig:radial}
 \end{figure}
@@ -17,8 +17,10 @@ categories, as can the rings in a circle chart. Parallel coordinates charts are 
 
 \begin{figure}
 \includegraphics{calendar.png}
-\caption{Figure from \cite{van_wijk_van_selow}. They visualized representative clusters of electricty usage and the relative frequency of each cluster using a calendar where day and cluster that day share the same color.}
+\caption{Figure from \cite{van_wijk_cluster_1999}. They visualized representative clusters of electricty usage and the relative frequency of each cluster using a calendar where day and cluster that day share the same color.}
 \label{fig:calendar}
 \end{figure}
 
-Finding patterns and trends in large datasets, whether univariate or multivariate, is often a matter of trying to find representational fingerprints of common or outlying events in the dataset. This is frequently done through the use of a clustering algorithm. Figure~ref{fig:calendar} shows an analysis of electricity usage in the Netherlands\cite{van_wijk_van_selow}. Because the individual observations were recorded every 6 hours for a year, van Wilk and van Selow transformed the hourly observations into a matrix where each vector holds the observations for a given day. They used an agglomerative clustering algorithm \cite{kaufman_rousseeuw} to find representative days, and color matched these clusters to a calendar of days to visualize how these clusters were distributed over time. 
+Finding patterns and trends in large datasets, whether univariate or multivariate, is often a matter of trying to find representational fingerprints of common or outlying events in the dataset. This is frequently done through the use of a clustering algorithm. Figure~ref{fig:calendar} shows an analysis of electricity usage in the Netherlands\cite{van_wijk_cluster_1999}. Because the individual observations were recorded every 6 hours for a year, van Wilk and van Selow transformed the hourly observations into a matrix where each vector holds the observations for a given day. They used an agglomerative clustering algorithm \cite{kaufman_agglomerative_1990} to find representative days, and color matched these clusters to a calendar of days to visualize how these clusters were distributed over time. 
+
+Techniques specifically aimed at clustering functional data can be found in the survey by Jacques, Julian and Preda \cite{Jacques_functional_2014}. %%todo: read and write up

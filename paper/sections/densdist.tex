@@ -9,7 +9,7 @@ Many multivariate visualizations treat the data space as a graph where the verti
 
 \begin{figure}
   \includegraphics{flexaxis.png}
-  \caption{Figure taken from \cite{claessen_van_wijk_2011} illustrates the following common
+  \caption{Figure taken from \cite{claessen_flexible_2011} illustrates the following common
     methods for visualizing multivariate datasets: matrix of scatters, parallel coordinates and radar charts.
   \label{fig:flexlink}
 \end{figure}
@@ -18,8 +18,8 @@ There are a number of methods for showing how measurements of different
 variables interact, and as showing figure~\ref{fig:flexlink} color is often
 used to illustrate how these relationships are different for each category of
 data. As seen in figure~\ref{fig:flexlink}, the common methods for showing
-visualizations are matrix of scatters \cite{elmqvist, } , parallel
-coordinates \cite{islenberg, wegman} and radar charts\cite{chambers_tukey}/ 
+visualizations are matrix of scatters \cite{elmqvist_rolling_2008} , parallel
+coordinates \cite{inselberg_plane_1985, wegman_hyperdimensional_1990} and radar charts\cite{chambers_graphical_1983}.
 
 \begin{figure}
   \includegraphics{parallelsets.png}
@@ -38,15 +38,14 @@ Another important factor in visualizing categorical data is retaining the
 inherent hierarchy in many datasets with categorical measurements
 \cite{shneiderman_visualizing_2000}. The Parallel Sets tool
 showin in figure~\ref{fig:parallelsets} is explicitly designed to show frequencies
-of set membership in heirarichal ordered categorical sets, so the \{d_0, \dots, d_n} \in D
-  \cite{kosara_parallel_2006}. Building on the flexible linked axis version of
+of set membership in heirarichal ordered categorical sets \cite{kosara_parallel_2006}. Building on the flexible linked axis version of
   the parallel coordinates plot \cite{claessen_flexible_2011}, Parallel Sets
   treats each categorical set independently but indicates conditional
   dependency through cross tabulations and by grouping the data, indicated via
   color, based on an active dimension that then becomes the pivot point for the
   cross tabulations. In Parallel Sets, quantitative data is converted to
   categorical via binning. Many-to-many PCP is another type of generalized
-  parallel coordinates where all possible pairs are explored \cite{lind}. 
+  parallel coordinates where all possible pairs are explored \cite{lind_many--many_2009}. 
 
 \begin{figure}
   \includegraphics{corr.png}

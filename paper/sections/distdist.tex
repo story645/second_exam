@@ -1,4 +1,4 @@
-\documentclass[../main.text]{subfiles}
+\documentclass[../main.tex]{subfiles}
 \begin{document}
 
 \section{Distributions}
@@ -9,28 +9,24 @@ intersections are common between sets \cite{agresti_categorical_2011,schneider_s
   It is the latter that is analogous to a
 conditional probability, the question of the likelihood of membership in one
 set given membership in another. And sometimes there is also a quantitative
-component involved too. The most common approach is usually to create a list of frequencies, sometimes of sets of one category, such as \D, or a cross-table\cite{goodman} where each cell is a an element in the product of two (or more sets), such as \D\cross \I creates a table
- where cell one is the frequency of elements that are in both $\d_0$ and
- $\i_0$.
+component involved too. The most common approach is usually to create a list of frequencies, sometimes of sets of one category or a cross-table\cite{goodman_measures_1991} which is an aggregate function applied to the product of two or more sets.
 
  While a table is encouraged for a small number of variables
- \cite{munznertablesgood}), bar graphs and histograms are typically used to display
- differences between subsets such as \d_0,\dots, \d_n
- \cite{ioannidis_history_2003-1, friendly_brief_2006}. Variations on histograms
+ \cite{munzner_what:_2014}), bar graphs and histograms are typically used to display differences between subsets \cite{ioannidis_history_2003-1, friendly_brief_2006}. Variations on histograms
  include the hanging rootgram, ord plot, and other distribution oriented
  plots \cite{tukey_exploratory_1977, friendly_visualizing_2000}. While conditional  distributions can somewhat be visualized using Fourfold displays, Mosaic displays, and using logit regression models, these plots have somewhat limited dimensionality and are somewhat limited to 3 sets of categories
  \cite{friendly_visualizing_2000}. 
    
  
- \begin{figure}
-   \includegraphics{upsetfig1}
-   \caption{UpSet dashboard displaying the relationships amongst movie
-     genres. On the left is the set visualization; the columns are the sets and
-     the rows are the exclusive intersections or aggregates. On the right is
-     the element view, and the scatter plot is a comparison of two sets with
-     each dot equaling one element in the set.}
-   \label{fig:upsetfig}
- \end{figure}
+ %%\begin{figure}
+  %% \includegraphics[width=\textwidth]{upsetfig1}
+   %%\caption{UpSet dashboard displaying the relationships amongst movie
+  %%genres. On the left is the set visualization; the columns are the sets and
+    %% the rows are the exclusive intersections or aggregates. On the right is
+    %% the element view, and the scatter plot is a comparison of two sets with
+     %%each dot equaling one element in the set.}
+   %%\label{fig:upsetfig}
+ %%\end{figure}
 
 The UpSet tool is designed to
 display a much larger number of set intersections and the aggregate
