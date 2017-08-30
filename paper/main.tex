@@ -30,8 +30,8 @@
 \section{Introduction}
 \label{sec:introduction}
 \begin{figure}
-  \includegraphics{chart_chooser}
-  \caption{From Bertin's Semiology of Graphics \cite{bertin}, this diagram
+  \includegraphics{chart_chooser.png}
+  \caption{From Bertin's Semiology of Graphics \cite{bertin_semiology_2011}, this diagram
     illustrates how there are many ways to display the same information about the 1954 Frnech
   workforce.}
   \label{fig:chart_chooser}
@@ -56,7 +56,7 @@ disaggregation, especially as the data structure grows more complex. Cross
 tabulation tables work for a small number of categorical variables, but are
 pushed to the limits at n=3 or 4. And most data is not solely categorical,
 instead often having quantitative densities of one sort or another. A complex but
-important form of quantitative densities are functional densities, where they are drawn from a continuous sample of observations \cite{ramsey2006, ramsey2002, muller2006}. That continuous sample is often over space or time or another parameter or combination thereof, and often it is
+important form of quantitative densities are functional densities, where they are drawn from a continuous sample of observations \cite{ramsay_functional_2006, muller_functional_2006}. That continuous sample is often over space or time or another parameter or combination thereof, and often it is
 important to preserve those functional dependencies in the visualization. For
 example, for storm modeling it is important to show the expected time and
 location of the rainfall. This survey presents a sampling of visualization
@@ -66,26 +66,25 @@ relationships within a dataset.
 
 
 \begin{table}
-
-\begin{tabular}
-                & Distribution           & Density 
-   Distribution & P(X|Y),P(A,B,C|E,F,G)  & 
-   Density      &              & p(X|Y), p(A,B,C|E,F,G)
+\begin{center}
+\begin{tabular}{lll}
+   Variable Type& Distribution           & Density\\ 
+   Distribution & $P(X\|Y),P(A,B,C|E,F,G)$  &  \\
+   Density      &                        & $p(X\|Y), p(A,B,C\|E,F,G)$\\
 \end{tabular}
-
-\caption{The rows represent the known distributions & densities while the
+\caption{The rows represent the known distributions and densities while the
   columns are the distributions and densities that the visualization aims to derive.}
+  \end{center}
 \end{table}
 
 While this survey focuses on data structured in a linear, tabular, or
-data cube way\cite{munzner data structure}, it could potentially be expanded to network data where the xi
-parameters represent edges in the graph. 
+data cube way\cite{munzner_what:_2014}, it could potentially be expanded to network data.
 
 
-\subfile{sections/distdist.tex}
-\subfile{sections/distdens.tex}
-\subfile{sections/densdist.tex}
-\subfile{sections/densdens.tex}
+%%\subfile{sections/distdist.tex}
+%%\subfile{sections/distdens.tex}
+%%\subfile{sections/densdist.tex}
+%%\subfile{sections/densdens.tex}
 
 \section{Conclusion}
 \label{sec:conclusion}

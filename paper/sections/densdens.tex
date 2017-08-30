@@ -4,9 +4,21 @@
 \section{Densities from Densities}
 
 
+\begin{figure}
+  \includegraphics{partial_dependence}
+  \caption{Taken from Scikit Learn\cite{scikit_learn}, the line plots show how California housing prices are partially dependent on each x variable. The heat map illustrates the joint effect of the age the house and the number of occupants in the house.}
+  \label{fig:partialdependence}
+\end{figure}
+
+
+One of the most straightforward ways to show dependencies is to plot one
+variable against another, but those methods often exclude the effects of the
+other variables in the datasets. Regression methods can be used to analyze the
+ways in which one variable is partially dependent on many other variables in
+the dataset\cite{Hastie_Tibshirani}. As shown in figure~\ref{fig:partialdependence}, one way partial dependence line plots and two way partial dependence heat maps show how California housing prices are marginally dependent on each variable. 
+
 While bar graphs and histograms can give a sense of the variability in
 data, they are limited to showing the dispersion of the data only in how the measurements are spread out. This is somewhat limiting for very large datasets, so the box plot has evolved as a way to display more characteristics of the distribution \cite{wickham2011}. While a simple box plot does not inherently show conditional dependencies, many derivations do. 
-
 
 \begin{figure}
   \includegraphics{boxplot}
