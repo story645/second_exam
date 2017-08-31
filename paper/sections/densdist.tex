@@ -1,6 +1,6 @@
 \documentclass[../main.text]{subfiles}
 \begin{document}
-\section{Densities from Distributions}
+\section{Quantitative Densities Conditioned on Qualitative Distributions}
 
 
 
@@ -8,9 +8,8 @@ Many multivariate visualizations treat the data space as a graph where the verti
 
 
 \begin{figure}
-  \includegraphics{flexaxis.png}
-  \caption{Figure taken from \cite{claessen_flexible_2011} illustrates the following common
-    methods for visualizing multivariate datasets: matrix of scatters, parallel coordinates and radar charts.
+  \includegraphics[width=\textwidth]{flexaxis.png}
+  \caption{This figure taken from a paper on improving multivariate data visualization using flexible linked axis \cite{claessen_flexible_2011} shows the common techniques of matrix of scatters, parallel coordinates and radar charts.}
   \label{fig:flexlink}
 \end{figure}
 
@@ -22,7 +21,7 @@ visualizations are matrix of scatters \cite{elmqvist_rolling_2008} , parallel
 coordinates \cite{inselberg_plane_1985, wegman_hyperdimensional_1990} and radar charts\cite{chambers_graphical_1983}.
 
 \begin{figure}
-  \includegraphics{parallelsets.png}
+  \includegraphics[width=\textwidth]{parallelsets.png}
   \caption{On the left is the categorical view, where users can define
     categories based on other categorical information. For example, in this
     view working family with children is defined as a household with one or
@@ -48,18 +47,18 @@ of set membership in heirarichal ordered categorical sets \cite{kosara_parallel_
   parallel coordinates where all possible pairs are explored \cite{lind_many--many_2009}. 
 
 \begin{figure}
-  \includegraphics{corr.png}
-  \label{caption} Zhang et al create an initial map (a) that they then apply an
+  \includegraphics[width=\textwidth]{corr.png}
+  \caption{Zhang et al create an initial map (a) that they then apply an
   edge filter to (b). They then allow the user to filter out a variable and
   either highlight only the vertexes of that variable (c) or the edges incident
-  on that variable(d).
+  on that variable(d).}
   \label{fig:corr}
 \end{figure}
 
 Often though it's important to retain the internal structure of the
 quantitative data, such as when the data is a function of time and
 space. Zhang et al propose a method that retains data and allows for
-visualizing more than just pairwise relationships\cite{zhang_visual_2015}. They
+visualizing more than just pairwise relationships \cite{zhang_visual_2015}. They
 introduce a concept of a correlation map, as shown in
 figure~\ref{fig:corr}. The authors build out a graph where every variable is a
 vertex and the edges are correlations between the connecting vertexes. The

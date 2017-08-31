@@ -1,7 +1,7 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 
-\section{Distributions}
+\section{Qualitative Variables Conditioned on Qualitative Distributions}
 
 Categorical data can be likened to set measurement, where each category is a set
 and researchers often want to know how many members each set has and what
@@ -18,20 +18,14 @@ component involved too. The most common approach is usually to create a list of 
  \cite{friendly_visualizing_2000}. 
    
  
- %%\begin{figure}
-  %% \includegraphics[width=\textwidth]{upsetfig1}
-   %%\caption{UpSet dashboard displaying the relationships amongst movie
-  %%genres. On the left is the set visualization; the columns are the sets and
-    %% the rows are the exclusive intersections or aggregates. On the right is
-    %% the element view, and the scatter plot is a comparison of two sets with
-     %%each dot equaling one element in the set.}
-   %%\label{fig:upsetfig}
- %%\end{figure}
+\begin{figure}
+  \includegraphics[width=\textwidth]{upsetfig1}
+   \caption{UpSet dashboard displaying the relationships amongst movie genres. On the left is the set visualization; the columns are the sets and
+   the rows are the exclusive intersections or aggregates. On the right is the element view, and the scatter plot is a comparison of two sets with each dot equaling one element in the set.}
+   \label{fig:upsetfig}
+\end{figure}
 
-The UpSet tool is designed to
-display a much larger number of set intersections and the aggregate
-information of quantitative attributes and set membership. \cite{lex_upset:_2014}
-As shown in figure~\ref{fig:upsetfig}, the Upset tool provides linked set and element views. The set view provides the intersections and their
+The UpSet tool is designed to display a much larger number of set intersections and the aggregate information of quantitative attributes and set membership. \cite{lex_upset:_2014} As shown in figure~\ref{fig:upsetfig}, the Upset tool provides linked set and element views. The set view provides the intersections and their
 aggregates, the frequencies of each set and intersection, and the aggregate
 statistics of the associated quantitative variables, while the element view shows
 selected elements and information about their set membership. The Upset tool
