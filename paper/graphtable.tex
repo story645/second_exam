@@ -1,0 +1,26 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{mcr}
+% \usepackage{graphicx}
+
+
+\let\mcn\multicolumn
+\let\mcr\multirow
+
+\begin{table}[]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{ccl|l|l|l|l|}
+\cline{4-7}
+\mcn{1}{l}{}                                  & \mcn{1}{l}{}                              &       & \mcn{4}{c|}{Probability of}                                             \\ \cline{4-7} 
+\mcn{1}{l}{}                                  & \mcn{1}{l}{}                              &       & \mcn{2}{c|}{Independent} & \mcn{2}{c|}{Dependent (Dimensional)} \\ \cline{4-7} 
+\mcn{1}{l}{}                                  & \mcn{1}{l}{}                              &       & Categorical     & Quantative     & Categorical   & Quantative           \\ \hline
+\mcn{1}{|c|}{\mcr{4}{*}{Conditioned On}} & \mcn{1}{c|}{\mcr{2}{*}{Independent}} 		 & Cat   &  a diagram, one diagram,  &   three diagrams, one diagram,   &       &                  \\ \cline{3-7} 
+\mcn{1}{|c|}{}                                & \mcn{1}{c|}{}                            & Quant &  scatterplot, triangular diagram      &  distribution            &                 &  a cartogram
+                      \\ \cline{2-7} 
+\mcn{1}{|c|}{}                                & \mcn{1}{c|}{\mcr{2}{*}{Dependent}}        & Cat   &                 &             &    circles (piecharts)  & four maps                       \\ \cline{3-7} 
+\mcn{1}{|c|}{}                                & \mcn{1}{c|}{}                             & Quant &   one map     &             &     columns & a map                       \\ \hline
+\end{tabular}%
+}
+\caption{Classification of Bertin's figures on the bases of the conditional dependencies shown in the figures.}
+\label{}
+\end{table}

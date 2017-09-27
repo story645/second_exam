@@ -36,10 +36,10 @@ Figure~\ref{fig:boxplot} illustrates how the distributions of these 1 dimensiona
 \cite{frigge_implementations_1989, schwertman_identifying_2007}, or otherwise incorporated skewness, kurtosis, and other descriptive distributional statistics \cite{kim_more_2004, marmolejo-ramos_shifting_2015}.
 
 While box plots were designed to visualize discrete observations, often there
-are no discrete observations and instead the `observation` is a timeseries
-curve (where the connections are as important as the individual points) or
+are no discrete observations and instead the `observation` is a functional densities, drawn from a continuous sample of observations \cite{ramsay_functional_2006, muller_functional_2006}.
+One such example is timeseries curve (where the connections are as important as the individual points) or
 spatial region. Understanding the distributions of functional observations
-often relies first ordering the functions such that there's some measure of how close these functions are to each other--functional depth\cite{febrero_functional_2007},
+often relies first ordering the functions such that there's some measure of how close these functions are to each other--depth\cite{febrero_functional_2007},
 bivariate score depth\cite{rob_j._hyndman_rainbow_2010}, and
 bivariate kernel density estimation\cite{scott_multivariate_1992} are some examples. This
 ordering then yields functional analogs to median and other percentile
@@ -50,7 +50,7 @@ ensembles.
 
 \begin{figure}
   \includegraphics[width=.75\linewidth]{contour_weather}
-  \caption{From \cite{whitaker_contour_2013}, the contour box plot method is used to show uncertainty in temperature ensembles while maintaining the temporal dimension of the data.}
+  \caption{From \cite{whitaker_contour_2013}, the contour box plot method is used to show uncertainty in temperature ensembles while maintaining the trajectory of of the data.}
   \label{fig:countour}
 \end{figure}
 Functional bag, box, and HDR plots \cite{rob_j._hyndman_rainbow_2010, sun_functional_2011} tend to be good at visualizing specific types of outliers, but are somewhat limited to only one functional distribution. A very common task is to compare ensembles, each a function of the same timeseries or geographic region. Contour box plots\cite{whitaker_contour_2013} aim to capture the variability of the

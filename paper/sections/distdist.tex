@@ -1,7 +1,7 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 
-\section{Qualitative Variables Conditioned on Qualitative Distributions}
+\section{Categorical Variables Conditioned on Categorical Distributions}
 
 Categorical data can be likened to set measurement, where each category is a set
 and researchers often want to know how many members each set has and what
@@ -28,7 +28,7 @@ component involved too. The most common approach is usually to create a list of 
 The UpSet tool is designed to display a much larger number of set intersections and the aggregate information of quantitative attributes and set membership. \cite{lex_upset:_2014} As shown in figure~\ref{fig:upsetfig}, the Upset tool provides linked set and element views. The set view provides the intersections and their
 aggregates, the frequencies of each set and intersection, and the aggregate
 statistics of the associated quantitative variables, while the element view shows
-selected elements and information about their set membership. The Upset tool
+selected elements and information about their set membership. The set view yields the distributions of each of the attributes. Far example the selected row (in the gray box) are the distributions of each quantative variable in the comedy set. Every row underneath is the distribution of that quantative variable restricted to movies in the intersection of the selected sets. For example, the distribution of ratings of movies that are both comedies and dramas. The Upset tool
 also facilitates comparison of filtered sets via scatterplot, which acts as a
 visualization of the attributes of the data conditioned on membership in the
 filtered set.  

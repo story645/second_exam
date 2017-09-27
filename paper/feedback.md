@@ -123,4 +123,4 @@ partial dependenc plot - linear regression, probability distribution and how tho
 
 contour boxplot = B is space, A is the path  (amend the caption, it's not the temporal dimension, but the trajectory)
 
-
+add in functional boxplot to add in

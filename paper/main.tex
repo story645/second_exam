@@ -6,82 +6,61 @@
 \usepackage[backend=bibtex, style=numeric-comp]{biblatex}
 \bibliography{main}
 
+\usepackage{array,multirow,graphicx}
 \usepackage{subfiles}
 \usepackage{url}
 \usepackage{amsmath}
 
 
 
-\title{Visualizing Conditional Relationships}
+\title{Visualizing Conditional Dependencies}
 \author{Hannah Aizenman}
 \committee{Dr. Michael Grossberg(Advisor), Dr. Robert Haralick, Dr. Lev Manovich, Dr. Huy Vo}
 \submitted{}
-\abstract{Many datasets have qualitative and quantitative variables and  also
-  often have functional attributes like time and location and visualizations
-  provide views on a subset of these variables and how they relate to each
-  other. For example a timeseries plot will keep the link between the variable
-  and time but lose the information encoded in the space variable. These
-  relationships can be modeled as conditional probabilities  such as P(V|t),
-  and visualizations can be organized based on which of these probabilities are
-  implicitly preserved in the visualization techniques. Modern visualizations
-  in particular try to tackle the difficulties of displaying these functional
-  relationships as the number of variables and the number of functional
-  dependencies (for example lat, lon, height, time, and type) increase. }
+\abstract{Many datasets are too large or complex to discern patterns simply through visualizing the observations in them, so researchers instead compute the distributions of select variables and explore under what conditions they occur. While there are many visualization techniques that preserve variable type, dimensionality, and mutlivariate relationships, the complexity increases when also trying to illustrate distributions and conditional relationships. This survey presents a sampling of techniques for visualizing distributions and densities conditioned on variables that are categorical or quantitative, discrete or continuous, and potentially have or infer dimensional dependencies. 
+}
 \begin{document}
 \makefrontmatter
 
 \section{Introduction}
 \label{sec:introduction}
+
 \begin{figure}
   \includegraphics[width=\textwidth]{chart_chooser.png}
-  \caption{From Bertin's Semiology of Graphics \cite{bertin_semiology_2011}, this diagram
-    illustrates how there are many ways to display the same information about the 1954 French
-  workforce.}
+  \caption{From Bertin's Semiology of Graphics \cite{bertin_semiology_2011}, this diagram illustrates various ways of representing information about the French workforce in 1954.}
   \label{fig:chart_chooser}
 \end{figure}
 
-There are almost an overwhelming number of visualizations, and no real correct
-choice for any given situation. As figure~\ref{fig:chart_chooser} shows, often
-there isn't even a single standout chart for a single dataset; instead the
-choice of figure is dependent on the relationships the researcher would like to
-extract from the dataset. Is it important to know how many people are in each
-department? A bar chart is suited for this, but this data has that information
-segmented into sectors - should it be combined or stay separated? Is the
-spatial distribution of the workforce something that should be preserved? If
-so, how should the sector information be retained? Sectors and space can both
-conditional attributes of the data, yielding information on how the workforce
-varies when disaggregated into these smaller blocks.
+In Semiology of Graphics, Bertin \cite{bertin_semiology_2011} presents a dataset of the French work force in 1954. This dataset aggregates the workers by region and by sector, and so is structured as follows:
+\begin{itemize}
+	\item department (geographic region of France)
+	\item  number of employees per thousands in each sector
+		\begin{itemize}
+			\item primary: agriculture
+			\item secondary: industry 
+			\item tertiary: commerce, transportation, services
+		\end{itemize}
+\end{itemize}
 
-Quite often, it is this disaggregation that is interesting to researchers
-because it points to multiple factors that can contribute to the measured
-outcome. The difficulty is in figuring out how to visualize this
-disaggregation, especially as the data structure grows more complex. Cross
-tabulation tables work for a small number of categorical variables, but are
-pushed to the limits at n=3 or 4. And most data is not solely categorical,
-instead often having quantitative densities of one sort or another. A complex but
-important form of quantitative densities are functional densities, where they are drawn from a continuous sample of observations \cite{ramsay_functional_2006, muller_functional_2006}. That continuous sample is often over space or time or another parameter or combination thereof, and often it is
-important to preserve those functional dependencies in the visualization. For
-example, for storm modeling it is important to show the expected time and
-location of the rainfall. This survey presents a sampling of visualization
-techniques that attempt to illustrate these conditional and functional
-relationships within a dataset. 
+In figure~\ref{fig:chart_chooser}, Bertin explores some potential visualizations of the data, and in doing so also illustrates the trade-offs these visualizations make. The first bar graph in the tree shows the number of works per sector, but discards the categorical and encodes the spatial as each bar. Categories can be included using a stacked bar chart or three independent bar charts; the former  better preserves the proportionality between sectors within each region, while the latter better displays the regional distribution within each sector. Discarding the geographic attributes allows even more interrogation of the relationships within and between categories, via histograms and scatter plots respectively. 
+
+While some of these approaches include the department as a the y variable, to some extent they discard the geographic information encoded in the department because this data has a physical counterpart that is not referenced in the visualization. To explicitly show this geographic information, Bertin proposes a second branch of map based visualizations. Taking the same sort of path as the upper branch, Bertin first proposes a map of how the entire workforce is distributed spatially over France. He then suggests a cartogram to show relative differences between geographic regions. As in the upper branch, he then incorporates the sector information; he proposes bubble charts and bar charts to highlight inter-sector differences and disaggregates the sectors and visualizes them as different maps to show how each sector is distributed over France. I
+
+In these visualizations, not only is Bertin showing how many people are in the French workforce in 1954, but he is also showing how that number is conditionally dependent on categorical information such as sector and department. With respect to department, he also tries to preserve the geographic distribution of the data. Figure~\ref{fig:chart_chooser} is mostly showing the number of employees given department, category, or both. While disaggregating employees over sector and geography provides a rich set of potential factors in employee count, it is also somewhat difficult to visualize if the goal is to preserve both regional and categorical differences. While 4 maps is a small enough number to not be overwhelming, they forewarn that this technique would likely not work for a larger number of sectors. 
 
 
+Despite ostensibly being a categorical variable, department can also be a dimension \cite{munzner_what:_2014} on which either number of employees or sector can depend since it maps to physical space rather than a measurement. Number of employees and the sector are traditional quantitative and categorical measurement types. This distinction of variable type serves as a basis for understanding what conditional dependencies are explored within each visualization:
 
-\begin{table}
-\begin{center}
-\begin{tabular}{lll}
-   Variable Type& Distribution           & Density\\ 
-   Distribution & $P(X\|Y),P(A,B,C|E,F,G)$  &  \\
-   Density      &                        & $p(X\|Y), p(A,B,C\|E,F,G)$\\
-\end{tabular}
-\caption{The rows represent the known distributions and densities while the
-  columns are the distributions and densities that the visualization aims to derive.}
-  \end{center}
-\end{table}
+\input{graphtable.tex}
 
-While this survey focuses on data structured in a linear, tabular, or
-data cube way \cite{munzner_what:_2014}, it could potentially be expanded to network data.
+
+This survey presents a sampling of visualization techniques that attempt to visually represent conditional dependencies between a variety of variables, including:
+\begin{enumerate}
+	\item quantitative and categorical variables
+	\item distributions and densities
+	\item variables with dimensional dependencies
+\end{enumerate}
+
 
 
 \subfile{sections/distdist.tex}
