@@ -4,14 +4,12 @@
 \graphicspath{{sections/figs/}{.figs/}}
 
 \usepackage[backend=bibtex, style=numeric-comp]{biblatex}
-\bibliography{main}
+\bibliography{glasslab_viz}
 
 \usepackage{array,multirow,graphicx}
 \usepackage{subfiles}
 \usepackage{url}
 \usepackage{amsmath}
-
-
 
 \title{Visualizing Conditional Dependencies}
 \author{Hannah Aizenman}
@@ -24,62 +22,104 @@
 
 \section{Introduction}
 \label{sec:introduction}
+Many datasets are multivariate and often contain a a mix of quantative and categorical variables. The Iris dataset \cite{fisher_use_1936-1, _uci_????} is a well known example of the type of data commonly found in machine learning literature. It is so wildely used as a sample dataset because it has 150 observations that have both quantative and categorical attributes. The version visualized in the introduction to this paper is obtained from the scikit-learn Python machine learning library \cite{scikit-learn}. The Iris dataset contains the following attributes:\\
+\begin{tabular} {lllll}
+Sepal length (cm) & Sepal width (cm) & Petal length (cm) & Petal width (cm) & Species name
+\end{tabular}
+\\
+A first step in exploring the dataset is typically to make a visualization, but of what sort? Bertin posits that all visualizations at their core have two parts \cite{bertin_semiology_2011}:
+\begin{description}
+\item[invariant] - invariable common ground
+\item[components] - a finite set of variational concepts
+\end{description}
 
 \begin{figure}
-  \includegraphics[width=\textwidth]{chart_chooser.png}
-  \caption{From Bertin's Semiology of Graphics \cite{bertin_semiology_2011}, this diagram illustrates various ways of representing information about the French workforce in 1954.}
-  \label{fig:chart_chooser}
+	\includegraphics[width=\textwidth]{intro/iris_pie}
+  	\caption{Relative amounts of each Iris species in the scikit-learn dataset\cite{scikit-learn}.}
+  	\label{fig:iris_pie}
 \end{figure}
 
-In Semiology of Graphics, Bertin \cite{bertin_semiology_2011} presents a dataset of the French work force in 1954. This dataset aggregates the workers by region and by sector, and so is structured as follows:
-\begin{itemize}
-	\item department (geographic region of France)
-	\item  number of employees per thousands in each sector
-		\begin{itemize}
-			\item primary: agriculture
-			\item secondary: industry 
-			\item tertiary: commerce, transportation, services
-		\end{itemize}
-\end{itemize}
+\begin{figure}
+\includegraphics[width=1\textwidth]{intro/retinal_variables.png}
+\caption{Bertin's retinal variables are a codification of how position, size, shape, color and texture can be used to illustrate variations in the components of a visualization. This tabular form of Bertin's retinal variables is from Understanding Graphics \cite{_information_????} reproduced from Making Maps: A Visual Guide to Map Design for GIS \cite{krygier_making_2005}}
+\label{fig:retinal_variables}
+\end{figure}
 
-In figure~\ref{fig:chart_chooser}, Bertin explores some potential visualizations of the data, and in doing so also illustrates the trade-offs these visualizations make. The first bar graph in the tree shows the number of works per sector, but discards the categorical and encodes the spatial as each bar. Categories can be included using a stacked bar chart or three independent bar charts; the former  better preserves the proportionality between sectors within each region, while the latter better displays the regional distribution within each sector. Discarding the geographic attributes allows even more interrogation of the relationships within and between categories, via histograms and scatter plots respectively. 
-
-While some of these approaches include the department as a the y variable, to some extent they discard the geographic information encoded in the department because this data has a physical counterpart that is not referenced in the visualization. To explicitly show this geographic information, Bertin proposes a second branch of map based visualizations. Taking the same sort of path as the upper branch, Bertin first proposes a map of how the entire workforce is distributed spatially over France. He then suggests a cartogram to show relative differences between geographic regions. As in the upper branch, he then incorporates the sector information; he proposes bubble charts and bar charts to highlight inter-sector differences and disaggregates the sectors and visualizes them as different maps to show how each sector is distributed over France. I
-
-In these visualizations, not only is Bertin showing how many people are in the French workforce in 1954, but he is also showing how that number is conditionally dependent on categorical information such as sector and department. With respect to department, he also tries to preserve the geographic distribution of the data. Figure~\ref{fig:chart_chooser} is mostly showing the number of employees given department, category, or both. While disaggregating employees over sector and geography provides a rich set of potential factors in employee count, it is also somewhat difficult to visualize if the goal is to preserve both regional and categorical differences. While 4 maps is a small enough number to not be overwhelming, they forewarn that this technique would likely not work for a larger number of sectors. 
+In figure~\ref{fig:iris_pie}, the invariant is the count of species and the components are the species themselves. In other words, the invariant is the value or calculation being visualized, and the components are usually the values on the axis and any variable encoded by what Bertin terms a retinal variable \cite{bertin_semiology_2011,krygier_making_2005}, which are the position, size, shape, color, and texture of the points, lines, or polygons in any visualization. As shown in figure~\ref{fig:retinal_variables}, Bertin recommends that quantative components be represented by retinal variables that change quantatively and that categorical components be represented by retinal variables that vary qualitatively. The small number of retinal variables suggests that visualizations are somewhat limited in how many components can be shown on any one graph.
 
 
-Despite ostensibly being a categorical variable, department can also be a dimension \cite{munzner_what:_2014} on which either number of employees or sector can depend since it maps to physical space rather than a measurement. Number of employees and the sector are traditional quantitative and categorical measurement types. This distinction of variable type serves as a basis for understanding what conditional dependencies are explored within each visualization:
+\begin{figure}
+ \includegraphics[width=\textwidth]{intro/munzner_datatypes}
+\caption{Keys are unique lookup values used to find individual values in the dataset. Image modified from a diagram from Munzner's website \cite{_visualization_????}}
+\label{fig:munzner_datatypes}
+\end{figure}
 
-\input{graphtable.tex}
 
+A special class of data variables are those that provide situational information about an observational measurement, such as the time and place the observation was recorded. Tamara Munzner provides a classification system for thinking about the semantics of a variable \cite{munzner_what_2014}:
+\begin{description}
+\item[value] measurement of interest 
+\item[key] uniqe index to look up value
+\end{description}
 
-This survey presents a sampling of visualization techniques that attempt to visually represent conditional dependencies between a variety of variables, including:
+\begin{table}
+\begin{center}
+\begin{tabular}{ l c r }
+  Munzner & Statistics & Data Warehousing \\
+  \hline
+  key & independent attribute & dimension \\
+  value & dependent attribute & measurement\\
+\end{tabular}
+\caption{Munzner's key, value designations are roughly analogous to independent and dependent semantics in statistics and what are commonly termed dimensions and measurements in the computer science community.}
+\label{table:munzner_semantics}
+\end{center}
+\end{table}
+
+As displayed in table~\ref{table:munzner_semantics}, keys and values are analogous to terms used within the statistics and data communities; the advantage of using keys and values is that they strictly refer to the real world semantics of the data\cite{munzner_what_2014}. Figure~\ref{fig:munzner_datatypes} illustrates how these keys are used to look up variables in a dataset. In a table or a database, it would be the primary key for a row, and in a map it could be an address or geopgraphic coordinates. In a multidimensional table, it could be a unique set of attributes-such as a timestamp, latitude, and longitude-associated with each measurment. 
+
+Expanding on Munzner's key and value semantics, in many datasets the keys are discrete variables like time or geophysical location that are sampled from a continous curve, surface, or field. While these observations are discrete samples from the continous space, often the continuinous (functional) characteristic\cite{ramsay_functional_2006,muller_functional_2006} of the observational space is what is of interest.
+
+\begin{figure}
+\includegraphics[width=\textwidth]{intro/iris_parallel}
+\caption{The parallel coordinates plot (PCP) of the Iris dataset shows the pairwise relationship between adjacent variables, for example sepal length and sepal width. The PCP plot can be used as proxy for illustrating conditional probability because it shows how the quantative measurements distribute amongst the species. This is is seen both in the relative widths of each band of color and in the similarites in shape of the orange and green (Iris Versicolour and Iris Virginica) bands and the consistent downward trend amongst the blue (Iris Setosa) bands.}
+\label{fig:iris_parallel}
+\end{figure}
+
+While the Iris dataset does not have any variables that seem to traditionally fit into the model of keys-as it has no time or space variables-an analogous look-up task for the Iris dataset is to filter on a component and then look at the probabiluty distributions of the other variables in relation tp that key. In effect this treats all variables as potential keys into distributions of the other variables. In the parallel coordinates plot (PCP) in figure~\ref{fig:iris_parallel.png}, each line is an observation in the dataset, and each color maps to a species of Iris. The color coding then allows for this visualization to be used to show how the four quantative variables (sepal length, sepal width, petal length, and petal width) distribute within each variable. 
+
+The visualization then becomes a way of visualizing the conditional probability of A given B:
+\begin{equation}
+P(A\mid B) = \frac{P(A \cap B}{P(B)} 
+\end{equation}
+
+wherein A is the observation vector $\left< \text{sepal length, sepal width, petal length, petal width} \right>$ and B in turn takes on each species of petal. The locations of the color and width of the colored band act as proxies for the distribution of each quantative variable and the overall observation vector. 
+
+\begin{figure}
+\includegraphics[width=\textwidth]{intro/iris_observations.png}
+\caption{The diaganol of the scatter matrix shows the distribution of each variable relative to the species type. This can be used to illustrate the conditional probability of each variable relative to a type of species. The scatter matrix plot shows every set of pairwise relationships in the dataset, color code by Iris species. Because the scatter matrix shows the cooccurance of two variables and is encoded with information about a third variable, it works well was a tool to explore a potential conditional dependency amongst the variables.}
+\label{fig:iris_observations}
+\end{figure}
+
+As exemplified by the scatter matrix in figure~\ref{fig:iris_observations}, there are a number of visualization techniques that can be used to explore conditional dependencies, but these methods are limited to datasets where the observations are discrete. There are visualization techniques for understanding the probability distributions of functional observations that could potentially be leverged in conjunction with these methods to develop methods for visualizing conditional dependencies in a functional space. This paper provides a sampling of the following visualizations:
 \begin{enumerate}
-	\item quantitative and categorical variables
-	\item distributions and densities
-	\item variables with dimensional dependencies
+\item methods for visualizing conditional dependency for discrete observations
+\item methods for visualizing uncertainity and probabilistic visualizations for functional observations
 \end{enumerate}
 
-
-
-\subfile{sections/distdist.tex}
-\subfile{sections/distdens.tex}
-\subfile{sections/densdist.tex}
-\subfile{sections/densdens.tex}
+%%\subfile{sections/distdist.tex}
+%%\subfile{sections/distdens.tex}
+%%\subfile{sections/densdist.tex}
+%%\subfile{sections/densdens.tex}
 
 \section{Conclusion}
 \label{sec:conclusion}
-When trying to choose a visualization technique for a problem, it is often
-crucial to interrogate the questions being asked of the data. What
-relationships are important to preserve and which can be discarded? While there
-are a what feels like infinite number of visualization techniques, this
-visualization task can be rather complicated, especially as the number of
-variables or dependencies increases. Interactive tools can help, but most are limited to showing pairwise or a small number of connected interactions. Machine learning can somewhat be used
-to explore which variables and dimensions, and therefore which relationships, are worth
-exploring further, but often the results of those algorithms need to
-be translated to the visual space and those visualizations need to be
-understandable. 
+
+
+
+1 Densities and distributions are important
+2 Visualization methods fall off as variables get more
+complex
+3 Can we build on current methods to show conditional
+dependencies and functional variables?
 
 
 \printbibliography
