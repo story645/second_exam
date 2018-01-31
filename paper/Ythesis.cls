@@ -48,7 +48,7 @@
 %%   to be declared from within the document itself. 
 \newcommand*{\makefrontmatter}{
 \bodyspacing
-\frontmatter\maketitlepage\makecopyrightpage\makeabstract
+\frontmatter\maketitlepage\makeabstract
 \makeacknowledgements\makededication\maketoc
 \makelot\clearpage\makelof\clearpage\makelos
 \clearpage\mainmatter
@@ -90,14 +90,6 @@
   \end{center}
   \clearpage
   }}
-\newcommand*{\makecopyrightpage}{
-  \thispagestyle{empty}
-  \vspace*{0in}
-  \begin{center}
-    \copyright\ Copyright by \@author, \@copyrightyear. \\
-    All rights reserved.
-  \end{center}
-  \clearpage}
 \newcommand*{\makeabstract}{
   \newpage
   \addcontentsline{toc}{section}{Abstract}
@@ -200,3 +192,4 @@
 \endinput
 %% 
 %% End of file `Ythesis.cls'.
+

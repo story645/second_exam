@@ -1,5 +1,9 @@
 \documentclass[letterpaper,onecolumn,titlepage]{Ythesis}
 
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{mindmap}
+
 \usepackage{graphicx}
 \graphicspath{{sections/figs/}{.figs/}}
 
@@ -7,15 +11,17 @@
 \bibliography{glasslab_viz}
 
 \usepackage{array,multirow,graphicx}
+\usepackage{subcaption}
 \usepackage{subfiles}
 \usepackage{url}
 \usepackage{amsmath}
+
 
 \title{Visualizing Conditional Dependencies}
 \author{Hannah Aizenman}
 \committee{Dr. Michael Grossberg(Advisor), Dr. Robert Haralick, Dr. Lev Manovich, Dr. Huy Vo}
 \submitted{}
-\abstract{Many datasets are too large or complex to discern patterns simply through visualizing the observations in them, so researchers instead compute the distributions of select variables and explore under what conditions they occur. While there are many visualization techniques that preserve variable type, dimensionality, and mutlivariate relationships, the complexity increases when also trying to illustrate distributions and conditional relationships. This survey presents a sampling of techniques for visualizing distributions and densities conditioned on variables that are categorical or quantitative, discrete or continuous, and potentially have or infer dimensional dependencies. 
+\abstract{Many datasets are too large or complex to discern patterns simply through visualizing the observations in them, so researchers instead compute the distributions of select variables and explore under what conditions they occur. While there are many visualization techniques that preserve variable type, dimensionality, and multivariate relationships, the complexity increases when also trying to illustrate distributions and conditional relationships. This survey presents a sampling of techniques for visualizing distributions and densities conditioned on variables that are categorical or quantitative, discrete or continuous, and potentially have or infer dimensional dependencies. 
 }
 \begin{document}
 \makefrontmatter
@@ -26,7 +32,9 @@ Many datasets are multivariate and often contain a a mix of quantative and categ
 \begin{tabular} {lllll}
 Sepal length (cm) & Sepal width (cm) & Petal length (cm) & Petal width (cm) & Species name
 \end{tabular}
-\\
+
+\subsection{Formalization of Visualization Terms}
+
 A first step in exploring the dataset is typically to make a visualization, but of what sort? Bertin posits that all visualizations at their core have two parts \cite{bertin_semiology_2011}:
 \begin{description}
 \item[invariant] - invariable common ground
@@ -39,6 +47,7 @@ A first step in exploring the dataset is typically to make a visualization, but 
   	\label{fig:iris_pie}
 \end{figure}
 
+\subsubsection{Bertin's Retinal Variables}
 \begin{figure}
 \includegraphics[width=1\textwidth]{intro/retinal_variables.png}
 \caption{Bertin's retinal variables are a codification of how position, size, shape, color and texture can be used to illustrate variations in the components of a visualization. This tabular form of Bertin's retinal variables is from Understanding Graphics \cite{_information_????} reproduced from Making Maps: A Visual Guide to Map Design for GIS \cite{krygier_making_2005}}
@@ -47,6 +56,7 @@ A first step in exploring the dataset is typically to make a visualization, but 
 
 In figure~\ref{fig:iris_pie}, the invariant is the count of species and the components are the species themselves. In other words, the invariant is the value or calculation being visualized, and the components are usually the values on the axis and any variable encoded by what Bertin terms a retinal variable \cite{bertin_semiology_2011,krygier_making_2005}, which are the position, size, shape, color, and texture of the points, lines, or polygons in any visualization. As shown in figure~\ref{fig:retinal_variables}, Bertin recommends that quantative components be represented by retinal variables that change quantatively and that categorical components be represented by retinal variables that vary qualitatively. The small number of retinal variables suggests that visualizations are somewhat limited in how many components can be shown on any one graph.
 
+\subsubsection{Munzner's data semantics}
 
 \begin{figure}
  \includegraphics[width=\textwidth]{intro/munzner_datatypes}
@@ -78,49 +88,55 @@ As displayed in table~\ref{table:munzner_semantics}, keys and values are analogo
 
 Expanding on Munzner's key and value semantics, in many datasets the keys are discrete variables like time or geophysical location that are sampled from a continous curve, surface, or field. While these observations are discrete samples from the continous space, often the continuinous (functional) characteristic\cite{ramsay_functional_2006,muller_functional_2006} of the observational space is what is of interest.
 
+\subsubsection{Conditional Probability}
 \begin{figure}
 \includegraphics[width=\textwidth]{intro/iris_parallel}
-\caption{The parallel coordinates plot (PCP) of the Iris dataset shows the pairwise relationship between adjacent variables, for example sepal length and sepal width. The PCP plot can be used as proxy for illustrating conditional probability because it shows how the quantative measurements distribute amongst the species. This is is seen both in the relative widths of each band of color and in the similarites in shape of the orange and green (Iris Versicolour and Iris Virginica) bands and the consistent downward trend amongst the blue (Iris Setosa) bands.}
+\caption{The parallel coordinates plot (PCP) of the Iris dataset shows the pairwise relationship between adjacent variables, for example sepal length and sepal width. The PCP plot can be used as proxy for illustrating conditional probability because it shows how the quantitative measurements distribute amongst the species. This is is seen both in the relative widths of each band of color and in the similarities in shape of the orange and green (Iris Versicolour and Iris Virginica) bands and the consistent downward trend amongst the blue (Iris Setosa) bands.}
 \label{fig:iris_parallel}
 \end{figure}
 
-While the Iris dataset does not have any variables that seem to traditionally fit into the model of keys-as it has no time or space variables-an analogous look-up task for the Iris dataset is to filter on a component and then look at the probabiluty distributions of the other variables in relation tp that key. In effect this treats all variables as potential keys into distributions of the other variables. In the parallel coordinates plot (PCP) in figure~\ref{fig:iris_parallel.png}, each line is an observation in the dataset, and each color maps to a species of Iris. The color coding then allows for this visualization to be used to show how the four quantative variables (sepal length, sepal width, petal length, and petal width) distribute within each variable. 
+While the Iris dataset does not have any variables that seem to traditionally fit into the model of keys-as it has no time or space variables-an analogous look-up task for the Iris dataset is to filter on a component and then look at the probability distributions of the other variables in relation tp that key. In effect this treats all variables as potential keys into distributions of the other variables. In the parallel coordinates plot (PCP)\cite{claessen_flexible_2011,_nist/sematech_????,inselberg_plane_1985, wegman_hyperdimensional_1990} in figure~\ref{fig:iris_parallel}, each line is an observation in the dataset, and each color maps to a species of Iris. The color coding then allows for this visualization to be used to show how the four quantative variables (sepal length, sepal width, petal length, and petal width) distribute within each variable. 
 
 The visualization then becomes a way of visualizing the conditional probability of A given B:
 \begin{equation}
 P(A\mid B) = \frac{P(A \cap B}{P(B)} 
 \end{equation}
 
-wherein A is the observation vector $\left< \text{sepal length, sepal width, petal length, petal width} \right>$ and B in turn takes on each species of petal. The locations of the color and width of the colored band act as proxies for the distribution of each quantative variable and the overall observation vector. 
+wherein A is the observation vector $\left< \text{sepal length, sepal width, petal length, petal width} \right>$ and B in turn takes on each species of petal. The locations of the color and width of the colored band act as proxies for the distribution of each quantitative variable and the overall observation vector. 
 
+\subsubsection{Conditional Dependency}
 \begin{figure}
 \includegraphics[width=\textwidth]{intro/iris_observations.png}
-\caption{The diaganol of the scatter matrix shows the distribution of each variable relative to the species type. This can be used to illustrate the conditional probability of each variable relative to a type of species. The scatter matrix plot shows every set of pairwise relationships in the dataset, color code by Iris species. Because the scatter matrix shows the cooccurance of two variables and is encoded with information about a third variable, it works well was a tool to explore a potential conditional dependency amongst the variables.}
+\caption{The diagonal of the scatter matrix shows the distribution of each variable relative to the species type. This can be used to illustrate the conditional probability of each variable relative to a type of species. The scatter matrix plot shows every set of pairwise relationships in the dataset, color code by Iris species. Because the scatter matrix shows the co-occurance of two variables and is encoded with information about a third variable, it works well was a tool to explore a potential conditional dependency amongst the variables.}
 \label{fig:iris_observations}
 \end{figure}
 
-As exemplified by the scatter matrix in figure~\ref{fig:iris_observations}, there are a number of visualization techniques that can be used to explore conditional dependencies, but these methods are limited to datasets where the observations are discrete. There are visualization techniques for understanding the probability distributions of functional observations that could potentially be leverged in conjunction with these methods to develop methods for visualizing conditional dependencies in a functional space. This paper provides a sampling of the following visualizations:
-\begin{enumerate}
-\item methods for visualizing conditional dependency for discrete observations
-\item methods for visualizing uncertainity and probabilistic visualizations for functional observations
-\end{enumerate}
+As exemplified by the scatter matrix\cite{elmqvist_rolling_2008,l._wilkinson_high-dimensional_2006} in figure~\ref{fig:iris_observations}, there are a number of visualization techniques that can be used to explore conditional dependencies, but these methods are limited to datasets where the observations are discrete. There are visualization techniques for understanding the probability distributions of functional observations that could potentially be leveraged in conjunction with these methods to develop methods for visualizing conditional dependencies in a functional space.
 
-%%\subfile{sections/distdist.tex}
-%%\subfile{sections/distdens.tex}
-%%\subfile{sections/densdist.tex}
-%%\subfile{sections/densdens.tex}
+
+\begin{figure}
+\input{papermap.tikz}
+\caption{The papers in this survey are organized by the type of observation and then by the type of measurements that makes up the observation.}
+\label{fig:papermap}
+\end{figure}
+
+ This survey organizes the methods for exploring conditional dependency by observation type and data semantics, as shown in figure~\ref{fig:papermap}. In the functional space, the focus is on visualizing distributions because that is a necessary component of exploring conditional dependencies. 
+
+
+
+
+
+\section{Discrete Observations}
+\subfile{sections/catset}
+\subfile{sections/radclust}
+\subfile{sections/pairwise}
+\section{Continuous Observations}
+\subfile{sections/quantKquantV}
 
 \section{Conclusion}
 \label{sec:conclusion}
 
-
-
-1 Densities and distributions are important
-2 Visualization methods fall off as variables get more
-complex
-3 Can we build on current methods to show conditional
-dependencies and functional variables?
-
+From climate models to Internet advertisement, a lot of modern datasets are very large and often structurally complex. And the questions being asked of these datasets are increasingly probabilistic-what is the distribution of observations, under what events do observations occur, and are there events that have to happen? The latter question is the one explored in conditional dependency visualizations. As explored in this paper, there are many techniques for exploring these dependencies in the discrete observation space, and there is a lot of work being done to understand distributions in the latter space. There is a space for future work that would leverage both to develop conditional dependency visualizations for functional datasets. 
 
 \printbibliography
 \end{document}

@@ -1,0 +1,26 @@
+\begin{tikzpicture}[mindmap, grow cyclic, every node/.style=concept, concept color=yellow!50, 
+    level 1/.append style={level distance=5cm,sibling angle=90},
+    level 2/.append style={level distance=3cm,sibling angle=45},]
+    
+\node{Observations}
+    child[concept color=purple!20]  {node {Categorical Discrete}
+            child {node{Cross Tabulation}}
+            child {node{Set Representation}}
+            }
+    child[concept color=purple!40]  {node {Quantitative as Categorical Discrete}
+            child {node{Radial Visualizations}}
+            child {node{Cluster Based Visualizations}}
+        }
+    child[concept color=purple!60]  {node {Quantitative Discrete}
+                    child {node{Parallel Sets}}
+                    child {node{Scatter matrix}}
+                    child {node{Partial Dependency Plot}}
+        }
+    child[concept color=pink!70]  { node {Continuous (Functional)}
+                child {node{Functional Boxplot}}
+                child {node{Contour Boxplot}}
+                child {node{Surface Boxplot}}
+            }
+    
+;
+\end{tikzpicture}
