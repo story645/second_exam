@@ -1,10 +1,4 @@
-\documentclass[tikz, margin=3mm]{standalone}
-\usepackage[utf8]{inputenc}
-\usepackage{tikz}
-\usetikzlibrary{arrows.meta, chains, positioning, shapes.geometric}
-
-\begin{document}
-    \begin{tikzpicture}[
+\begin{tikzpicture}[
     node distance = 5mm and 7mm,
       start chain = going right,
  disc/.style = {shape=cylinder, draw, shape aspect=0.3,
@@ -18,11 +12,9 @@
 \node (n2) [alg]  {Invariant};
 \node (n4) [disc, minimum width=3cm] {Components};
     \end{scope}
-\node(n5)[above right=of n4, xshift=1cm, inner sep=0pt] {\includegraphics[width=.25\textwidth]{sections/figs/intro/catquant}};
-\node(n6)[below right=of n4, xshift=1cm, inner sep=0pt] {\includegraphics[width=.25\textwidth]{sections/figs/intro/quantquant.png}};
+\node(n5)[above right=of n4, xshift=2cm, inner sep=0pt] {\includegraphics[width=.2\textwidth]{sections/figs/intro/catquant}};
+\node(n6)[below right=of n4, xshift=2cm, inner sep=0pt] {\includegraphics[width=.2\textwidth]{sections/figs/intro/quantquant.png}};
 
 \draw[->] (n4) -- (n5);
 \draw[->] (n4) -- (n6);
-
-    \end{tikzpicture}
-\end{document}
+\end{tikzpicture}
